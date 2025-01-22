@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://wf2r7p6tyov7"]
+
+[ext_resource type="Texture2D" uid="uid://kpptvxyenvsw" path="res://Assets/Circulo_lago/Circulo1.png" id="1_b7y4v"]
+[ext_resource type="Script" path="res://Assets/Circulo_lago/circulo_lago.gd" id="1_jrd3w"]
+[ext_resource type="Texture2D" uid="uid://8rxnydpavrr0" path="res://Assets/Circulo_lago/Circulo2.png" id="2_b1ov8"]
+[ext_resource type="PackedScene" uid="uid://bpwwjons4wlvj" path="res://Assets/Pez_azul/pez_azul.tscn" id="3_owuju"]
+
+[node name="Circulo_lago" type="Node2D"]
+script = ExtResource("1_jrd3w")
+
+[node name="Sprite_circulogrande" type="Sprite2D" parent="."]
+texture = ExtResource("1_b7y4v")
+
+[node name="Pez_azul" parent="Sprite_circulogrande" instance=ExtResource("3_owuju")]
+position = Vector2(-130, 0)
+
+[node name="Pez_azul2" parent="Sprite_circulogrande" instance=ExtResource("3_owuju")]
+position = Vector2(-91, -147)
+
+[node name="Pez_azul3" parent="Sprite_circulogrande" instance=ExtResource("3_owuju")]
+position = Vector2(129, -85)
+
+[node name="Pez_azul4" parent="Sprite_circulogrande" instance=ExtResource("3_owuju")]
+position = Vector2(7, 151)
+
+[node name="Sprite_circulochico" type="Sprite2D" parent="."]
+texture = ExtResource("2_b1ov8")
+
+[node name="Pez_azul" parent="Sprite_circulochico" instance=ExtResource("3_owuju")]
+position = Vector2(-30, -30)
+
+[node name="Pez_azul2" parent="Sprite_circulochico" instance=ExtResource("3_owuju")]
+position = Vector2(38, 10)

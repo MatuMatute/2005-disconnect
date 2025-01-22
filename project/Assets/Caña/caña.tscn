@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4nvod7n5e0hj"]
+
+[ext_resource type="Script" path="res://Assets/Caña/caña.gd" id="1_ej364"]
+[ext_resource type="Texture2D" uid="uid://bqjs72manrfap" path="res://Assets/Caña/caña.png" id="1_pjaxc"]
+[ext_resource type="Texture2D" uid="uid://brku8yu4tmm1t" path="res://Assets/Caña/anzuelo.png" id="2_5oawx"]
+[ext_resource type="Texture2D" uid="uid://dl52lqmi6tta5" path="res://Assets/Caña/sombra_anzuelo.png" id="4_nju8j"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8kmq7"]
+a = Vector2(-71, -106)
+b = Vector2(143, 143)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6wjw"]
+size = Vector2(16, 6)
+
+[node name="Caña" type="CharacterBody2D"]
+script = ExtResource("1_ej364")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_pjaxc")
+
+[node name="Colision_caña" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_8kmq7")
+
+[node name="Cuerda" type="Line2D" parent="."]
+points = PackedVector2Array(-64, 32, -64, -85)
+closed = true
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Sombra" type="Sprite2D" parent="."]
+position = Vector2(-64, 128)
+texture = ExtResource("4_nju8j")
+
+[node name="Anzuelo" type="CharacterBody2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Anzuelo"]
+texture = ExtResource("2_5oawx")
+
+[node name="Colision_anzuelo" type="CollisionShape2D" parent="Anzuelo"]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_s6wjw")

@@ -249,6 +249,26 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_06ybr")
 
+[node name="fishing_interface" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ronda" type="Label" parent="fishing_interface"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+horizontal_alignment = 1
+
+[node name="Puntuacion" type="Label" parent="fishing_interface"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+horizontal_alignment = 1
+
 [node name="Fade" type="ColorRect" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -259,19 +279,129 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="menu_container" type="VBoxContainer" parent="."]
+[node name="opciones_container" type="VBoxContainer" parent="."]
 visible = false
-custom_minimum_size = Vector2(693, 266)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="volver_container" type="HBoxContainer" parent="opciones_container"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Volver_menu2" type="Button" parent="opciones_container/volver_container"]
+layout_mode = 2
+text = "Volver"
+
+[node name="Aplicar" type="Button" parent="opciones_container/volver_container"]
+visible = false
+layout_mode = 2
+text = "Aplicar configuración"
+
+[node name="resolucion_container" type="HBoxContainer" parent="opciones_container"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Resolucion" type="Label" parent="opciones_container/resolucion_container"]
+layout_mode = 2
+text = "Resolución de pantalla"
+
+[node name="Opcion" type="OptionButton" parent="opciones_container/resolucion_container"]
+layout_mode = 2
+alignment = 1
+selected = 2
+item_count = 6
+popup/item_0/text = "640 x 360"
+popup/item_1/text = "854 x 480"
+popup/item_1/id = 1
+popup/item_2/text = "1280 x 720"
+popup/item_2/id = 2
+popup/item_3/text = "1366 x 768"
+popup/item_3/id = 3
+popup/item_4/text = "1920 x 1080"
+popup/item_4/id = 4
+popup/item_5/text = "2560 x 1440"
+popup/item_5/id = 5
+
+[node name="ventana_container" type="HBoxContainer" parent="opciones_container"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Ventana" type="Label" parent="opciones_container/ventana_container"]
+layout_mode = 2
+text = "Modo de ventana"
+
+[node name="Opcion" type="OptionButton" parent="opciones_container/ventana_container"]
+layout_mode = 2
+alignment = 1
+selected = 2
+item_count = 3
+popup/item_0/text = "Ventana"
+popup/item_1/text = "Pantalla completa"
+popup/item_1/id = 1
+popup/item_2/text = "Sin bordes"
+popup/item_2/id = 2
+
+[node name="vsync_container" type="HBoxContainer" parent="opciones_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Vsync" type="CheckButton" parent="opciones_container/vsync_container"]
+layout_mode = 2
+button_pressed = true
+text = "Sincronización vertical"
+
+[node name="creditos_container" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
 offset_top = -20.0
-offset_right = 20.0
+offset_right = 43.0
 offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Creditos" type="Label" parent="creditos_container"]
+layout_mode = 2
+text = "odd-games
+Camila Martínez
+Matías Nahuel González Sandoval
+Florencia Belate Dietrich
+Beta testers: PRÓXIMAMENTE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volver_menu" type="Button" parent="creditos_container"]
+layout_mode = 2
+text = "Volver"
+
+[node name="menu_container" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(693, 293)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -346.5
+offset_top = -133.0
+offset_right = 346.5
+offset_bottom = 133.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -299,11 +429,17 @@ layout_mode = 2
 text = "Salir"
 
 [node name="Nos_vemos" type="Label" parent="menu_container"]
-visible = false
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 text = "¡Nos vemos pronto!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Version" type="Label" parent="menu_container"]
+layout_mode = 2
+text = "v0.0.0.1"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="logo_container" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -343,6 +479,15 @@ libraries = {
 "": SubResource("AnimationLibrary_qiku4")
 }
 
+[connection signal="pressed" from="opciones_container/volver_container/Volver_menu2" to="." method="_on_volver_menu_pressed"]
+[connection signal="pressed" from="opciones_container/volver_container/Aplicar" to="." method="_on_aplicar_configuracion_pressed"]
+[connection signal="item_selected" from="opciones_container/resolucion_container/Opcion" to="." method="_on_resolucion_item_selected"]
+[connection signal="item_selected" from="opciones_container/ventana_container/Opcion" to="." method="_on_tipo_ventana_selected"]
+[connection signal="toggled" from="opciones_container/vsync_container/Vsync" to="." method="_on_vsync_toggled"]
+[connection signal="pressed" from="creditos_container/Volver_menu" to="." method="_on_volver_menu_pressed"]
+[connection signal="pressed" from="menu_container/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="menu_container/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="menu_container/Creditos" to="." method="_on_creditos_pressed"]
 [connection signal="mouse_entered" from="menu_container/Salir" to="." method="_on_salir_mouse_entered"]
 [connection signal="mouse_exited" from="menu_container/Salir" to="." method="_on_salir_mouse_exited"]
 [connection signal="pressed" from="menu_container/Salir" to="." method="_on_salir_pressed"]

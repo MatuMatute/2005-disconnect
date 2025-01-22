@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpwwjons4wlvj"]
+
+[ext_resource type="Texture2D" uid="uid://cmh2j6eqwlpjc" path="res://icon.svg" id="1_1n5o3"]
+[ext_resource type="Script" path="res://Assets/Pez_azul/pez_azul.gd" id="1_knuuj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otbha"]
+size = Vector2(36, 40)
+
+[node name="Pez_azul" type="Area2D"]
+script = ExtResource("1_knuuj")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_1n5o3")
+
+[node name="Colision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_otbha")

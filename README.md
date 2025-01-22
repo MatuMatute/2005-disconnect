@@ -1,4 +1,4 @@
-# odd-game
+# odd-games
 Equipo:  
 Camila Martínez  
 Matías González Sandoval  

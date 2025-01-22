@@ -5,5 +5,5 @@ func _ready() -> void:
 	rotate(randf_range(0.0, PI * 2))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

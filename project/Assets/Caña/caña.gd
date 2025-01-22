@@ -14,7 +14,7 @@ func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Ajustar la posición del anzuelo al de la cuerda
 	Anzuelo.position = Cuerda.get_point_position(0)
 	# Función de movimiento

@@ -1,8 +1,8 @@
 extends Node
 
 # Declaro nodos importantes de la interfaz
-@onready var ronda_display = $"/root/Interfaz/Principal/fishing_interface/Ronda"
-@onready var puntuacion_display = $"/root/Interfaz/Principal/fishing_interface/Puntuacion"
+@onready var ronda_display = $"/root/Interfaz/Principal/fishing_interface/fishing_container/Ronda"
+@onready var puntuacion_display = $"/root/Interfaz/Principal/fishing_interface/fishing_container/Puntuacion"
 
 # Variables que controlan el gameplay
 var ronda = 1

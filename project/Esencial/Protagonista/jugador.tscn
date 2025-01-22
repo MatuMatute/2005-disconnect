@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxw216m87unqw"]
+
+[ext_resource type="Script" path="res://Esencial/Protagonista/jugador.gd" id="1_n0c4k"]
+[ext_resource type="Texture2D" uid="uid://c2c1ju7n1ekh2" path="res://Esencial/Protagonista/Prueba.png" id="1_ogsml"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pyyuj"]
+radius = 53.0
+height = 232.0
+
+[node name="Jugador" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_n0c4k")
+velocidad = 300
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_ogsml")
+
+[node name="Colision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 270)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pyyuj")

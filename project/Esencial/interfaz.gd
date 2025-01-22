@@ -8,6 +8,7 @@ extends Control
 @onready var menu_container = $Principal/menu_container
 @onready var opciones_container = $Principal/opciones_container
 @onready var creditos_container = $Principal/creditos_container
+@onready var pausa_container = $Principal/pausa_container
 @onready var aplicar = $Principal/opciones_container/volver_container/Aplicar
 @onready var nos_vemos = $Principal/menu_container/Nos_vemos
 
@@ -45,17 +46,27 @@ var habitacion: Resource
 
 # Esta función se llama la primera vez que se llama al nodo.
 func _ready() -> void:
-	habitacion = ResourceLoader.load("res://Escenarios principales/habitacion.tscn")
+	Global.pausa = true
+	habitacion = ResourceLoader.load("res://Escenarios principales/Habitación/habitacion.tscn")
 	$"/root".add_child.call_deferred(habitacion.instantiate())
 	animacion.play("odd-games")
 
+func _process(_delta: float) -> void:
+	match Global.pausa:
+		false:
+			if Input.is_action_just_pressed("ui_cancel"):
+				fade.show()
+				pausa_container.show()
+				Global.pausa = true
+
 # Al presionar el botón "Jugar" esta función se activa
 func _on_jugar_pressed() -> void:
-	var nivel = ResourceLoader.load("res://Escenarios principales/letsgofishing.tscn")
+	#var nivel = ResourceLoader.load("res://Escenarios principales/letsgofishing.tscn")
 	menu_container.hide()
 	fade.hide()
-	$"/root/Habitacion".queue_free()
-	$"/root".add_child(nivel.instantiate())
+	Global.pausa = false
+	#$"/root/Habitacion".queue_free()
+	#$"/root".add_child(nivel.instantiate())
 
 func _on_opciones_pressed() -> void:
 	menu_container.hide()
@@ -119,3 +130,12 @@ func _on_volver_menu_pressed() -> void:
 	if creditos_container.visible:
 		menu_container.show()
 		creditos_container.hide()
+
+
+func _on_boton_prueba_jaja_pressed() -> void:
+	var nivel = ResourceLoader.load("res://Escenarios principales/letsgofishing.tscn")
+	pausa_container.hide()
+	fade.hide()
+	Global.pausa = false
+	$"/root/Habitacion".queue_free()
+	$"/root".add_child(nivel.instantiate())

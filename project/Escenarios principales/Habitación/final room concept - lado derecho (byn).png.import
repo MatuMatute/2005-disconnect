@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fr62eda6p0rc"
-path="res://.godot/imported/final room concept - lado derecho (byn).png-17c47364148be2778e5ba19c629dc061.ctex"
+path="res://.godot/imported/final room concept - lado derecho (byn).png-70d8415a62f41845005590c57e6e33c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Habitación/final room concept - lado derecho (byn).png"
-dest_files=["res://.godot/imported/final room concept - lado derecho (byn).png-17c47364148be2778e5ba19c629dc061.ctex"]
+source_file="res://Escenarios principales/Habitación/final room concept - lado derecho (byn).png"
+dest_files=["res://.godot/imported/final room concept - lado derecho (byn).png-70d8415a62f41845005590c57e6e33c9.ctex"]
 
 [params]
 

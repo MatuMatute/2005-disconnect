@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7vfd64nc4l24"
-path="res://.godot/imported/final room concept - lado izquierdo (byn).png-9f51793a475467fec29b181cbb6f0263.ctex"
+uid="uid://c2c1ju7n1ekh2"
+path="res://.godot/imported/Prueba.png-36d52bcca7f3de360434afe63eefbb03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Habitación/final room concept - lado izquierdo (byn).png"
-dest_files=["res://.godot/imported/final room concept - lado izquierdo (byn).png-9f51793a475467fec29b181cbb6f0263.ctex"]
+source_file="res://Esencial/Protagonista/Prueba.png"
+dest_files=["res://.godot/imported/Prueba.png-36d52bcca7f3de360434afe63eefbb03.ctex"]
 
 [params]
 

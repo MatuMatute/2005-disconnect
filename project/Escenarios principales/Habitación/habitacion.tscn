@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://rgjjerg5bvua"]
+
+[ext_resource type="PackedScene" uid="uid://cqrrxgogf7ef1" path="res://Esencial/camara.tscn" id="1_8gu3x"]
+[ext_resource type="Texture2D" uid="uid://7vfd64nc4l24" path="res://Escenarios principales/Habitación/final room concept - lado izquierdo (byn).png" id="2_0tgee"]
+[ext_resource type="Texture2D" uid="uid://fr62eda6p0rc" path="res://Escenarios principales/Habitación/final room concept - lado derecho (byn).png" id="3_1t6by"]
+[ext_resource type="PackedScene" uid="uid://dxw216m87unqw" path="res://Esencial/Protagonista/jugador.tscn" id="4_wfud1"]
+
+[node name="Habitacion" type="Node2D"]
+
+[node name="Camara" parent="." instance=ExtResource("1_8gu3x")]
+position = Vector2(1920, 0)
+
+[node name="Zona1" type="Sprite2D" parent="."]
+texture = ExtResource("2_0tgee")
+centered = false
+
+[node name="Zona2" type="Sprite2D" parent="."]
+position = Vector2(1920, 0)
+texture = ExtResource("3_1t6by")
+centered = false
+
+[node name="Jugador" parent="." instance=ExtResource("4_wfud1")]
+position = Vector2(3642, 666)

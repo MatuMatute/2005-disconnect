@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://wf2r7p6tyov7" path="res://Assets/Circulo_lago/circulo_lago.tscn" id="1_6j5rt"]
 [ext_resource type="PackedScene" uid="uid://b4nvod7n5e0hj" path="res://Assets/Caña/caña.tscn" id="1_ee43r"]
-[ext_resource type="Script" path="res://Escenarios/letsgofishing.gd" id="1_p5q6q"]
+[ext_resource type="Script" path="res://Escenarios principales/letsgofishing.gd" id="1_p5q6q"]
 
 [node name="Letsgofishing" type="Node"]
 script = ExtResource("1_p5q6q")
 
 [node name="Circulo_lago" parent="." instance=ExtResource("1_6j5rt")]
-position = Vector2(650, 358)
+position = Vector2(922, 517)
 
 [node name="Caña" parent="." instance=ExtResource("1_ee43r")]
-position = Vector2(1079, 281)
+position = Vector2(1262, 365)

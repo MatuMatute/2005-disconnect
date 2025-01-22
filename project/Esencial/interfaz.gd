@@ -1,15 +1,15 @@
 extends Control
 
 #Declaro las variables de los nodos de la interfaz
-@onready var animacion = $Animaciones
-@onready var fade = $Fade
-@onready var logo = $logo_container/oddgames
-@onready var presenta = $logo_container/presenta
-@onready var menu_container = $menu_container
-@onready var opciones_container = $opciones_container
-@onready var creditos_container = $creditos_container
-@onready var aplicar = $opciones_container/volver_container/Aplicar
-@onready var nos_vemos = $menu_container/Nos_vemos
+@onready var animacion = $Principal/Animaciones
+@onready var fade = $Principal/Fade
+@onready var logo = $Principal/logo_container/oddgames
+@onready var presenta = $Principal/logo_container/presenta
+@onready var menu_container = $Principal/menu_container
+@onready var opciones_container = $Principal/opciones_container
+@onready var creditos_container = $Principal/creditos_container
+@onready var aplicar = $Principal/opciones_container/volver_container/Aplicar
+@onready var nos_vemos = $Principal/menu_container/Nos_vemos
 
 # Asigno las resoluciones de pantalla posibles como valores en un array para simplificar el cambio de resolucion de pantalla
 var resoluciones: Array = [
@@ -20,36 +20,41 @@ var resoluciones: Array = [
 	Vector2i(1920, 1080), 
 	Vector2i(2560, 1440)]
 
+# Asigno los modos de ventana disponibles para el videojuego
 var modo_ventana: Array = [
 	DisplayServer.WINDOW_MODE_WINDOWED,
 	DisplayServer.WINDOW_MODE_FULLSCREEN,
 	DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
 ]
 
+# Opciones de sincronización vertical
 var vsync: Array = [
 	DisplayServer.VSYNC_ENABLED,
 	DisplayServer.VSYNC_DISABLED
 ]
 
+# Administrador de los valores cambiados en el menú de opciones
 var valores_index = {
-	"Resolución": 2,
+	"Resolución": 4,
 	"Modo de ventana": 2,
 	"Sincronización vertical": 0
 }
 
+# Variables adicionales importantes más adelante
+var habitacion: Resource
+
 # Esta función se llama la primera vez que se llama al nodo.
 func _ready() -> void:
+	habitacion = ResourceLoader.load("res://Escenarios principales/habitacion.tscn")
+	$"/root".add_child.call_deferred(habitacion.instantiate())
 	animacion.play("odd-games")
-
-# Esta funcion es llamada cada fotograma.
-func _process(delta: float) -> void:
-	pass
 
 # Al presionar el botón "Jugar" esta función se activa
 func _on_jugar_pressed() -> void:
-	var nivel = ResourceLoader.load("res://Escenarios/letsgofishing.tscn")
+	var nivel = ResourceLoader.load("res://Escenarios principales/letsgofishing.tscn")
 	menu_container.hide()
 	fade.hide()
+	$"/root/Habitacion".queue_free()
 	$"/root".add_child(nivel.instantiate())
 
 func _on_opciones_pressed() -> void:

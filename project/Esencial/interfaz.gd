@@ -9,6 +9,7 @@ extends Control
 @onready var opciones_container = $Principal/opciones_container
 @onready var creditos_container = $Principal/creditos_container
 @onready var pausa_container = $Principal/pausa_container
+@onready var fishing_interface = $Principal/fishing_interface
 @onready var aplicar = $Principal/opciones_container/volver_container/Aplicar
 @onready var nos_vemos = $Principal/menu_container/Nos_vemos
 
@@ -55,18 +56,30 @@ func _process(_delta: float) -> void:
 	match Global.pausa:
 		false:
 			if Input.is_action_just_pressed("ui_cancel"):
-				fade.show()
-				pausa_container.show()
-				Global.pausa = true
+				pausar()
 
 # Al presionar el botón "Jugar" esta función se activa
 func _on_jugar_pressed() -> void:
-	#var nivel = ResourceLoader.load("res://Escenarios principales/letsgofishing.tscn")
 	menu_container.hide()
 	fade.hide()
 	Global.pausa = false
-	#$"/root/Habitacion".queue_free()
-	#$"/root".add_child(nivel.instantiate())
+
+func _on_probar_computadora_pressed() -> void:
+	var computadora = ResourceLoader.load("res://Escenarios principales/Computadora/computadora.tscn")
+	menu_container.hide()
+	fade.hide()
+	Global.pausa = false
+	$"/root/Habitacion".queue_free()
+	$Principal/fishing_interface.add_sibling(computadora.instantiate(),)
+
+func _on_probar_lgf_pressed() -> void:
+	var lgf = ResourceLoader.load("res://Escenarios principales/letsgofishing.tscn")
+	menu_container.hide()
+	fade.hide()
+	fishing_interface.show()
+	Global.pausa = false
+	$"/root/Habitacion".queue_free()
+	$"/root".add_child(lgf.instantiate())
 
 func _on_opciones_pressed() -> void:
 	menu_container.hide()
@@ -76,14 +89,12 @@ func _on_resolucion_item_selected(index: int) -> void:
 	valores_index["Resolución"] = index
 	match aplicar.visible:
 		false: aplicar.show()
-	#get_window().set_size(resoluciones[index])
 
 # Al modificar el tipo de ventana se activa esta función
 func _on_tipo_ventana_selected(index: int) -> void:
 	valores_index["Modo de ventana"] = index
 	match aplicar.visible:
 		false: aplicar.show()
-	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
 # Al cambiar el modo de sincronizado vertical se activa esta función
 func _on_vsync_toggled(toggled_on: bool) -> void:
@@ -105,7 +116,7 @@ func _on_aplicar_configuracion_pressed() -> void:
 	centrar_pantalla()
 	aplicar.hide()
 
-
+# Se activa al presionar el botón de "Créditos"
 func _on_creditos_pressed() -> void:
 	menu_container.hide()
 	creditos_container.show()
@@ -124,18 +135,34 @@ func _on_salir_mouse_exited() -> void:
 
 # Cuando se presiona el botón para volver al menú
 func _on_volver_menu_pressed() -> void:
-	if opciones_container.visible:
-		menu_container.show()
-		opciones_container.hide()
-	if creditos_container.visible:
-		menu_container.show()
-		creditos_container.hide()
+	match opciones_container.visible:
+		true:
+			menu_container.show()
+			opciones_container.hide()
+	match creditos_container.visible:
+		true:
+			menu_container.show()
+			creditos_container.hide()
 
+# Pausa el juego
+func pausar() -> void:
+	fade.show()
+	pausa_container.show()
+	Global.pausa = true
 
-func _on_boton_prueba_jaja_pressed() -> void:
-	var nivel = ResourceLoader.load("res://Escenarios principales/letsgofishing.tscn")
+# Resume el juego, cerrando el menú de pausa
+func resumir() -> void:
 	pausa_container.hide()
 	fade.hide()
 	Global.pausa = false
-	$"/root/Habitacion".queue_free()
-	$"/root".add_child(nivel.instantiate())
+
+# Este botón hace un soft-reboot del juego
+func _on_regresar_menu_pressed() -> void:
+	var escenarios = get_tree().get_nodes_in_group("Escenarios")
+	match escenarios.size():
+		0: $"Principal/Computadora".queue_free()
+	for i in escenarios.size():
+		escenarios[i].queue_free()
+	$"/root".add_child(habitacion.instantiate())
+	pausa_container.hide()
+	menu_container.show()

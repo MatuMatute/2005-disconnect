@@ -1,23 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://rgjjerg5bvua"]
+[gd_scene load_steps=6 format=3 uid="uid://rgjjerg5bvua"]
 
-[ext_resource type="PackedScene" uid="uid://cqrrxgogf7ef1" path="res://Esencial/camara.tscn" id="1_8gu3x"]
+[ext_resource type="PackedScene" uid="uid://cqrrxgogf7ef1" path="res://Esencial/Cámara/camara.tscn" id="1_8gu3x"]
+[ext_resource type="Script" path="res://Escenarios principales/Habitación/habitacion.gd" id="1_pspuk"]
 [ext_resource type="Texture2D" uid="uid://7vfd64nc4l24" path="res://Escenarios principales/Habitación/final room concept - lado izquierdo (byn).png" id="2_0tgee"]
 [ext_resource type="Texture2D" uid="uid://fr62eda6p0rc" path="res://Escenarios principales/Habitación/final room concept - lado derecho (byn).png" id="3_1t6by"]
 [ext_resource type="PackedScene" uid="uid://dxw216m87unqw" path="res://Esencial/Protagonista/jugador.tscn" id="4_wfud1"]
 
-[node name="Habitacion" type="Node2D"]
+[node name="Habitacion" type="Node2D" groups=["Escenarios"]]
+script = ExtResource("1_pspuk")
 
 [node name="Camara" parent="." instance=ExtResource("1_8gu3x")]
 position = Vector2(1920, 0)
 
-[node name="Zona1" type="Sprite2D" parent="."]
+[node name="Ubicacion" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="Zona1" type="Sprite2D" parent="Ubicacion"]
 texture = ExtResource("2_0tgee")
 centered = false
 
-[node name="Zona2" type="Sprite2D" parent="."]
+[node name="Zona2" type="Sprite2D" parent="Ubicacion"]
 position = Vector2(1920, 0)
 texture = ExtResource("3_1t6by")
 centered = false
 
+[node name="Colision" type="CollisionPolygon2D" parent="Ubicacion"]
+build_mode = 1
+polygon = PackedVector2Array(102, 1023, 166, 906, 169, 708, 824, 707, 819, 848, 898, 850, 1026, 677, 1144, 679, 1141, 774, 1730, 774, 1728, 679, 2061, 675, 2068, 723, 2111, 764, 2160, 780, 2263, 782, 2330, 771, 2371, 717, 2519, 717, 2519, 755, 2569, 763, 3029, 760, 2986, 845, 2997, 952, 3280, 950, 3293, 836, 3255, 751, 3423, 755, 3429, 675, 3612, 675, 3628, 720, 3840, 720, 3840, 1080, 102, 1080)
+
 [node name="Jugador" parent="." instance=ExtResource("4_wfud1")]
-position = Vector2(3642, 666)
+position = Vector2(3559, 682)

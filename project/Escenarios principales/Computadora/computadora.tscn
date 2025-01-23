@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2me15mdwx6n7"]
+
+[ext_resource type="Texture2D" uid="uid://m66jck0pvjwb" path="res://Escenarios principales/Computadora/monitor fp.png" id="1_w6too"]
+[ext_resource type="Texture2D" uid="uid://b2m08dkxje675" path="res://Escenarios principales/Computadora/Iconos/Icono LGF.png" id="2_ooisy"]
+[ext_resource type="FontFile" uid="uid://cysc5spliqiyf" path="res://Assets/Fonts/FrutigerLTStd-Roman.otf" id="3_ivula"]
+[ext_resource type="Texture2D" uid="uid://bqfkjiei2ui2f" path="res://Escenarios principales/Computadora/Iconos/Icono WH.png" id="4_301mx"]
+[ext_resource type="Texture2D" uid="uid://dqeyocxwtkkjq" path="res://Escenarios principales/Computadora/Iconos/Icono MSN.png" id="5_knaqd"]
+
+[node name="Computadora" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fondo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_w6too")
+
+[node name="Margen_pantalla" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 82.0
+offset_right = 1790.0
+offset_bottom = 906.0
+
+[node name="Orden_iconos" type="GridContainer" parent="Margen_pantalla"]
+layout_mode = 2
+
+[node name="LGF" type="Button" parent="Margen_pantalla/Orden_iconos"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 1, 1)
+theme_override_fonts/font = ExtResource("3_ivula")
+theme_override_font_sizes/font_size = 32
+text = "Let's go fishing!"
+icon = ExtResource("2_ooisy")
+flat = true
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="WRT" type="Button" parent="Margen_pantalla/Orden_iconos"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 1, 1)
+theme_override_fonts/font = ExtResource("3_ivula")
+theme_override_font_sizes/font_size = 32
+text = "Water Ring Toss"
+icon = ExtResource("4_301mx")
+flat = true
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="MSN" type="Button" parent="Margen_pantalla/Orden_iconos"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 1, 1)
+theme_override_fonts/font = ExtResource("3_ivula")
+theme_override_font_sizes/font_size = 32
+text = "MSN"
+icon = ExtResource("5_knaqd")
+flat = true
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0

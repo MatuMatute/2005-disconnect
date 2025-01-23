@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgv7tstileblb"]
+[gd_scene load_steps=9 format=3 uid="uid://dgv7tstileblb"]
 
 [ext_resource type="Script" path="res://Esencial/interfaz.gd" id="1_06ybr"]
+[ext_resource type="FontFile" uid="uid://baeix8mw2fiye" path="res://Assets/Fonts/FrutigerLTStd-LightItalic.otf" id="2_x7k2w"]
+[ext_resource type="FontFile" uid="uid://ck15s64movp2k" path="res://Assets/Fonts/FrutigerLTStd-Light.otf" id="3_6idcw"]
 
 [sub_resource type="Animation" id="Animation_vlqhu"]
 length = 0.001
@@ -252,6 +254,7 @@ script = ExtResource("1_06ybr")
 [node name="Principal" type="CanvasLayer" parent="."]
 
 [node name="fishing_interface" type="MarginContainer" parent="Principal"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -294,16 +297,37 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 10
 
 [node name="Pausa" type="Label" parent="Principal/pausa_container"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x7k2w")
 theme_override_font_sizes/font_size = 72
 text = "pausa"
 uppercase = true
 
-[node name="boton_prueba_jaja" type="Button" parent="Principal/pausa_container"]
+[node name="Resumir" type="Button" parent="Principal/pausa_container"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-text = "Jugar \"Let's go fishing\""
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Resumir"
+
+[node name="Regresar_menu" type="Button" parent="Principal/pausa_container"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Volver al menú principal"
+
+[node name="Salir" type="Button" parent="Principal/pausa_container"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Salir"
 
 [node name="opciones_container" type="VBoxContainer" parent="Principal"]
 visible = false
@@ -326,12 +350,17 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Volver_menu2" type="Button" parent="Principal/opciones_container/volver_container"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
 text = "Volver"
 
 [node name="Aplicar" type="Button" parent="Principal/opciones_container/volver_container"]
 visible = false
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
 text = "Aplicar configuración"
 
 [node name="resolucion_container" type="HBoxContainer" parent="Principal/opciones_container"]
@@ -341,10 +370,14 @@ alignment = 1
 
 [node name="Resolucion" type="Label" parent="Principal/opciones_container/resolucion_container"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
 text = "Resolución de pantalla"
 
 [node name="Opcion" type="OptionButton" parent="Principal/opciones_container/resolucion_container"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
 alignment = 1
 selected = 4
 item_count = 6
@@ -366,10 +399,14 @@ theme_override_constants/separation = 20
 
 [node name="Ventana" type="Label" parent="Principal/opciones_container/ventana_container"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
 text = "Modo de ventana"
 
 [node name="Opcion" type="OptionButton" parent="Principal/opciones_container/ventana_container"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
 alignment = 1
 selected = 2
 item_count = 3
@@ -379,14 +416,13 @@ popup/item_1/id = 1
 popup/item_2/text = "Sin bordes"
 popup/item_2/id = 2
 
-[node name="vsync_container" type="HBoxContainer" parent="Principal/opciones_container"]
+[node name="Vsync" type="CheckButton" parent="Principal/opciones_container"]
 layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Vsync" type="CheckButton" parent="Principal/opciones_container/vsync_container"]
-layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
 button_pressed = true
 text = "Sincronización vertical"
+expand_icon = true
 
 [node name="creditos_container" type="VBoxContainer" parent="Principal"]
 visible = false
@@ -405,6 +441,8 @@ theme_override_constants/separation = 10
 
 [node name="Creditos" type="Label" parent="Principal/creditos_container"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
 text = "odd-games
 Camila Martínez
 Matías Nahuel González Sandoval
@@ -414,7 +452,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Volver_menu" type="Button" parent="Principal/creditos_container"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
 text = "Volver"
 
 [node name="menu_container" type="VBoxContainer" parent="Principal"]
@@ -434,37 +476,73 @@ grow_vertical = 2
 
 [node name="Titulo" type="Label" parent="Principal/menu_container"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 72
-text = "juego sin nombre"
+theme_override_fonts/font = ExtResource("2_x7k2w")
+theme_override_font_sizes/font_size = 120
+text = "2005"
 horizontal_alignment = 1
 uppercase = true
 
 [node name="Jugar" type="Button" parent="Principal/menu_container"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
 text = "Jugar"
 
-[node name="Opciones" type="Button" parent="Principal/menu_container"]
+[node name="probar_computadora" type="Button" parent="Principal/menu_container"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Probar computadora"
+
+[node name="probar_lgf" type="Button" parent="Principal/menu_container"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Probar \"Let's go fishing!\" (prototipo muy temprano)"
+
+[node name="Opciones" type="Button" parent="Principal/menu_container"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
 text = "Opciones"
 
 [node name="Creditos" type="Button" parent="Principal/menu_container"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
 text = "Créditos"
 
 [node name="Salir" type="Button" parent="Principal/menu_container"]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
 text = "Salir"
 
 [node name="Nos_vemos" type="Label" parent="Principal/menu_container"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x7k2w")
+theme_override_font_sizes/font_size = 24
 text = "¡Nos vemos pronto!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Version" type="Label" parent="Principal/menu_container"]
 layout_mode = 2
-text = "v0.0.0.2"
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 24
+text = "v0.0.0.3"
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -484,6 +562,7 @@ grow_vertical = 2
 
 [node name="oddgames" type="Label" parent="Principal/logo_container"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x7k2w")
 theme_override_font_sizes/font_size = 48
 text = "odd-games_"
 horizontal_alignment = 1
@@ -495,6 +574,7 @@ visible_ratio = 0.0
 [node name="presenta" type="Label" parent="Principal/logo_container"]
 visible = false
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 24
 text = "presenta"
 horizontal_alignment = 2
@@ -511,14 +591,20 @@ libraries = {
 
 [node name="Musica" type="AudioStreamPlayer" parent="Audio"]
 
-[connection signal="pressed" from="Principal/pausa_container/boton_prueba_jaja" to="." method="_on_boton_prueba_jaja_pressed"]
+[connection signal="pressed" from="Principal/pausa_container/Resumir" to="." method="resumir"]
+[connection signal="pressed" from="Principal/pausa_container/Regresar_menu" to="." method="_on_regresar_menu_pressed"]
+[connection signal="mouse_entered" from="Principal/pausa_container/Salir" to="." method="_on_salir_mouse_entered"]
+[connection signal="mouse_exited" from="Principal/pausa_container/Salir" to="." method="_on_salir_mouse_exited"]
+[connection signal="pressed" from="Principal/pausa_container/Salir" to="." method="_on_salir_pressed"]
 [connection signal="pressed" from="Principal/opciones_container/volver_container/Volver_menu2" to="." method="_on_volver_menu_pressed"]
 [connection signal="pressed" from="Principal/opciones_container/volver_container/Aplicar" to="." method="_on_aplicar_configuracion_pressed"]
 [connection signal="item_selected" from="Principal/opciones_container/resolucion_container/Opcion" to="." method="_on_resolucion_item_selected"]
 [connection signal="item_selected" from="Principal/opciones_container/ventana_container/Opcion" to="." method="_on_tipo_ventana_selected"]
-[connection signal="toggled" from="Principal/opciones_container/vsync_container/Vsync" to="." method="_on_vsync_toggled"]
+[connection signal="toggled" from="Principal/opciones_container/Vsync" to="." method="_on_vsync_toggled"]
 [connection signal="pressed" from="Principal/creditos_container/Volver_menu" to="." method="_on_volver_menu_pressed"]
 [connection signal="pressed" from="Principal/menu_container/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="Principal/menu_container/probar_computadora" to="." method="_on_probar_computadora_pressed"]
+[connection signal="pressed" from="Principal/menu_container/probar_lgf" to="." method="_on_probar_lgf_pressed"]
 [connection signal="pressed" from="Principal/menu_container/Opciones" to="." method="_on_opciones_pressed"]
 [connection signal="pressed" from="Principal/menu_container/Creditos" to="." method="_on_creditos_pressed"]
 [connection signal="mouse_entered" from="Principal/menu_container/Salir" to="." method="_on_salir_mouse_entered"]

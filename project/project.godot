@@ -70,13 +70,16 @@ ui_down={
 
 2d_render/layer_1="Jugador"
 2d_render/layer_2="Paredes"
-2d_render/layer_3="Transiciones"
+2d_render/layer_3="Caña"
+2d_render/layer_4="Pez"
 2d_physics/layer_1="Jugador"
 2d_navigation/layer_1="Jugador"
 2d_physics/layer_2="Paredes"
 2d_navigation/layer_2="Paredes"
-2d_physics/layer_3="Transiciones"
-2d_navigation/layer_3="Trancisiones"
+2d_physics/layer_3="Caña"
+2d_navigation/layer_3="Caña"
+2d_physics/layer_4="Pez"
+2d_navigation/layer_4="Pez"
 
 [rendering]
 

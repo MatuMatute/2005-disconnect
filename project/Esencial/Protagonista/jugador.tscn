@@ -9,8 +9,8 @@ height = 232.0
 
 [node name="Jugador" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 3
+collision_mask = 3
 motion_mode = 1
 safe_margin = 1.0
 script = ExtResource("1_n0c4k")

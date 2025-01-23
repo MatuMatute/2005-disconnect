@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgv7tstileblb"]
+[gd_scene load_steps=10 format=3 uid="uid://dgv7tstileblb"]
 
 [ext_resource type="Script" path="res://Esencial/interfaz.gd" id="1_06ybr"]
 [ext_resource type="FontFile" uid="uid://baeix8mw2fiye" path="res://Assets/Fonts/FrutigerLTStd-LightItalic.otf" id="2_x7k2w"]
 [ext_resource type="FontFile" uid="uid://ck15s64movp2k" path="res://Assets/Fonts/FrutigerLTStd-Light.otf" id="3_6idcw"]
+[ext_resource type="AudioStream" uid="uid://ci1cevosqewoh" path="res://Assets/Audio/Sonido/teclado lento.wav" id="4_gdnrm"]
 
 [sub_resource type="Animation" id="Animation_vlqhu"]
 length = 0.001
@@ -498,13 +499,6 @@ theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 32
 text = "Probar computadora"
 
-[node name="probar_lgf" type="Button" parent="Principal/menu_container"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "Probar \"Let's go fishing!\" (prototipo muy temprano)"
-
 [node name="Opciones" type="Button" parent="Principal/menu_container"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
@@ -542,7 +536,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 24
-text = "v0.0.0.3"
+text = "0.1.4"
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -591,6 +585,11 @@ libraries = {
 
 [node name="Musica" type="AudioStreamPlayer" parent="Audio"]
 
+[node name="Sonidos" type="Node" parent="Audio"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/Sonidos"]
+stream = ExtResource("4_gdnrm")
+
 [connection signal="pressed" from="Principal/pausa_container/Resumir" to="." method="resumir"]
 [connection signal="pressed" from="Principal/pausa_container/Regresar_menu" to="." method="_on_regresar_menu_pressed"]
 [connection signal="mouse_entered" from="Principal/pausa_container/Salir" to="." method="_on_salir_mouse_entered"]
@@ -604,7 +603,6 @@ libraries = {
 [connection signal="pressed" from="Principal/creditos_container/Volver_menu" to="." method="_on_volver_menu_pressed"]
 [connection signal="pressed" from="Principal/menu_container/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="Principal/menu_container/probar_computadora" to="." method="_on_probar_computadora_pressed"]
-[connection signal="pressed" from="Principal/menu_container/probar_lgf" to="." method="_on_probar_lgf_pressed"]
 [connection signal="pressed" from="Principal/menu_container/Opciones" to="." method="_on_opciones_pressed"]
 [connection signal="pressed" from="Principal/menu_container/Creditos" to="." method="_on_creditos_pressed"]
 [connection signal="mouse_entered" from="Principal/menu_container/Salir" to="." method="_on_salir_mouse_entered"]

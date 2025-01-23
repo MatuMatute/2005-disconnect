@@ -69,17 +69,8 @@ func _on_probar_computadora_pressed() -> void:
 	menu_container.hide()
 	fade.hide()
 	Global.pausa = false
-	$"/root/Habitacion".queue_free()
-	$Principal/fishing_interface.add_sibling(computadora.instantiate(),)
-
-func _on_probar_lgf_pressed() -> void:
-	var lgf = ResourceLoader.load("res://Escenarios principales/letsgofishing.tscn")
-	menu_container.hide()
-	fade.hide()
-	fishing_interface.show()
-	Global.pausa = false
-	$"/root/Habitacion".queue_free()
-	$"/root".add_child(lgf.instantiate())
+	cerrar_escenarios()
+	$Principal/fishing_interface.add_sibling(computadora.instantiate())
 
 func _on_opciones_pressed() -> void:
 	menu_container.hide()
@@ -158,11 +149,14 @@ func resumir() -> void:
 
 # Este botón hace un soft-reboot del juego
 func _on_regresar_menu_pressed() -> void:
+	cerrar_escenarios()
+	$"/root".add_child.call_deferred(habitacion.instantiate())
+	pausa_container.hide()
+	menu_container.show()
+
+func cerrar_escenarios() -> void:
 	var escenarios = get_tree().get_nodes_in_group("Escenarios")
 	match escenarios.size():
 		0: $"Principal/Computadora".queue_free()
 	for i in escenarios.size():
 		escenarios[i].queue_free()
-	$"/root".add_child(habitacion.instantiate())
-	pausa_container.hide()
-	menu_container.show()

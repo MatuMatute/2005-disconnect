@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2me15mdwx6n7"]
+[gd_scene load_steps=7 format=3 uid="uid://d2me15mdwx6n7"]
 
+[ext_resource type="Script" path="res://Escenarios principales/Computadora/computadora.gd" id="1_t8hjx"]
 [ext_resource type="Texture2D" uid="uid://m66jck0pvjwb" path="res://Escenarios principales/Computadora/monitor fp.png" id="1_w6too"]
 [ext_resource type="Texture2D" uid="uid://b2m08dkxje675" path="res://Escenarios principales/Computadora/Iconos/Icono LGF.png" id="2_ooisy"]
 [ext_resource type="FontFile" uid="uid://cysc5spliqiyf" path="res://Assets/Fonts/FrutigerLTStd-Roman.otf" id="3_ivula"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_t8hjx")
 
 [node name="Fondo" type="TextureRect" parent="."]
 layout_mode = 0
@@ -84,3 +86,5 @@ flat = true
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+
+[connection signal="pressed" from="Margen_pantalla/Orden_iconos/LGF" to="." method="_on_lgf_pressed"]

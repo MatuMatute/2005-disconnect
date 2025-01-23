@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwc84fi7187th"]
+
+[ext_resource type="Script" path="res://Escenarios principales/Computadora/LGF/letsgofishing.gd" id="1_il06m"]
+[ext_resource type="PackedScene" uid="uid://wf2r7p6tyov7" path="res://Assets/Circulo_lago/circulo_lago.tscn" id="2_kytvw"]
+[ext_resource type="PackedScene" uid="uid://b4nvod7n5e0hj" path="res://Assets/Caña/caña.tscn" id="3_25tws"]
+
+[node name="letsgofishing" type="Node2D"]
+script = ExtResource("1_il06m")
+
+[node name="Circulo_lago" parent="." instance=ExtResource("2_kytvw")]
+position = Vector2(512, 480)
+
+[node name="Caña" parent="." instance=ExtResource("3_25tws")]
+position = Vector2(707, 342)
+
+[node name="Tiempo" type="Timer" parent="."]
+wait_time = 60.0

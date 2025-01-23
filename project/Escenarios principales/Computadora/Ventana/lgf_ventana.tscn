@@ -1,0 +1,142 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsxpanlm44hli"]
+
+[ext_resource type="FontFile" uid="uid://sg2wkwe5in7k" path="res://Assets/Fonts/FrutigerLTStd-Black.otf" id="1_6q68q"]
+[ext_resource type="Script" path="res://Escenarios principales/Computadora/Ventana/lgf_ventana.gd" id="1_c0dx2"]
+[ext_resource type="FontFile" uid="uid://ck15s64movp2k" path="res://Assets/Fonts/FrutigerLTStd-Light.otf" id="1_gli52"]
+[ext_resource type="PackedScene" uid="uid://bwc84fi7187th" path="res://Escenarios principales/Computadora/LGF/letsgofishing.tscn" id="3_vjen8"]
+[ext_resource type="FontFile" uid="uid://b2gn8i5wh2cog" path="res://Assets/Fonts/FrutigerLTStd-BlackItalic.otf" id="4_70ast"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55xus"]
+bg_color = Color(0.35106, 0.692758, 0.318521, 1)
+border_width_left = 8
+border_width_top = 48
+border_width_right = 8
+border_width_bottom = 8
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs6vm"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.764706, 0, 0, 1)
+border_blend = true
+
+[node name="LGF_ventana" type="MarginContainer"]
+custom_minimum_size = Vector2(1040, 824)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -20.0
+offset_right = 24.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_c0dx2")
+
+[node name="Top" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_55xus")
+
+[node name="Titulo" type="Label" parent="."]
+custom_minimum_size = Vector2(240, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_gli52")
+theme_override_font_sizes/font_size = 32
+text = "Let's go fishing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cerrar" type="Button" parent="."]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_6q68q")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_bs6vm")
+text = "X"
+
+[node name="letsgofishing" parent="." instance=ExtResource("3_vjen8")]
+
+[node name="fishing_interface" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1024, 768)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="fishing_container" type="HBoxContainer" parent="fishing_interface"]
+custom_minimum_size = Vector2(768, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Nivel" type="Label" parent="fishing_interface/fishing_container"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_70ast")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Tiempo" type="Label" parent="fishing_interface/fishing_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_70ast")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Puntuacion" type="Label" parent="fishing_interface/fishing_container"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_70ast")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Mostrar_nivel" type="Label" parent="fishing_interface"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
+theme_override_constants/shadow_offset_x = -8
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("4_70ast")
+theme_override_font_sizes/font_size = 72
+uppercase = true
+
+[connection signal="comenzar_nivel" from="." to="letsgofishing" method="_on_comenzar_nivel"]
+[connection signal="pressed" from="Cerrar" to="." method="_on_cerrar_pressed"]
+[connection signal="cambiar_nivel" from="letsgofishing" to="." method="_on_letsgofishing_cambiar_nivel"]
+[connection signal="cambiar_puntuacion" from="letsgofishing" to="." method="_on_letsgofishing_cambiar_puntuacion"]

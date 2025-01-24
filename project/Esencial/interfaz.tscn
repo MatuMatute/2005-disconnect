@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://d2me15mdwx6n7" path="res://Escenarios principales/Computadora/computadora.tscn" id="2_oqdvo"]
 [ext_resource type="FontFile" uid="uid://baeix8mw2fiye" path="res://Assets/Fonts/FrutigerLTStd-LightItalic.otf" id="2_x7k2w"]
 [ext_resource type="FontFile" uid="uid://ck15s64movp2k" path="res://Assets/Fonts/FrutigerLTStd-Light.otf" id="3_6idcw"]
-[ext_resource type="AudioStream" uid="uid://ci1cevosqewoh" path="res://Assets/Audio/Sonido/teclado lento.wav" id="4_gdnrm"]
 [ext_resource type="Texture2D" uid="uid://bs1vwdqvsmh7t" path="res://Esencial/Menú principal/logo menu.png" id="5_tr0f5"]
 [ext_resource type="Texture2D" uid="uid://m66jck0pvjwb" path="res://Escenarios principales/Computadora/monitor fp.png" id="5_xtodr"]
 [ext_resource type="Texture2D" uid="uid://yvli2pkk2okx" path="res://Esencial/Menú principal/menu_boton_jugar.png" id="6_ycu6n"]
 [ext_resource type="Texture2D" uid="uid://datm77ro0vjy6" path="res://Esencial/Menú principal/menu_boton_opciones.png" id="7_cvj7y"]
 [ext_resource type="Texture2D" uid="uid://cl728q5wxcwjk" path="res://Esencial/Menú principal/menu_boton_creditos.png" id="9_1f27r"]
 [ext_resource type="Texture2D" uid="uid://be55qr4fmnnmc" path="res://Esencial/Menú principal/menu_boton_salir.png" id="10_iw63g"]
+[ext_resource type="AudioStream" uid="uid://ha0oxx36os4r" path="res://Assets/Audio/Sonido/ui_click.wav" id="11_74xdd"]
 
 [sub_resource type="Animation" id="Animation_vlqhu"]
 length = 0.001
@@ -417,9 +417,10 @@ vertical_alignment = 1
 
 [node name="Version" type="Label" parent="Principal/Menu/menu_botones"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 24
-text = "0.2.1"
+theme_override_font_sizes/font_size = 32
+text = "0.2.2"
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -666,8 +667,8 @@ libraries = {
 
 [node name="Sonidos" type="Node" parent="Audio"]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/Sonidos"]
-stream = ExtResource("4_gdnrm")
+[node name="Click" type="AudioStreamPlayer" parent="Audio/Sonidos"]
+stream = ExtResource("11_74xdd")
 
 [connection signal="pressed" from="Principal/Menu/menu_botones/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="Principal/Menu/menu_botones/probar_computadora" to="." method="_on_probar_computadora_pressed"]

@@ -5,28 +5,27 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ok16f"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ff0af"]
-radius = 3.0
-height = 18.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lixeq"]
+size = Vector2(6, 14)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jcxnp"]
-radius = 3.0
-height = 18.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc8lk"]
+size = Vector2(6, 14)
 
 [node name="Aro" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 4
 physics_material_override = SubResource("PhysicsMaterial_ok16f")
 gravity_scale = 0.08
+can_sleep = false
 script = ExtResource("1_oqhf1")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_0jx7c")
 
 [node name="Colision1" type="CollisionShape2D" parent="."]
-position = Vector2(-24, 0)
-shape = SubResource("CapsuleShape2D_ff0af")
+position = Vector2(-25, 0)
+shape = SubResource("RectangleShape2D_lixeq")
 
 [node name="Colision2" type="CollisionShape2D" parent="."]
 position = Vector2(24, 1)
-shape = SubResource("CapsuleShape2D_jcxnp")
+shape = SubResource("RectangleShape2D_pc8lk")

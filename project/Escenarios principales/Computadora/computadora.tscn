@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2me15mdwx6n7"]
+[gd_scene load_steps=9 format=3 uid="uid://d2me15mdwx6n7"]
 
 [ext_resource type="Script" path="res://Escenarios principales/Computadora/computadora.gd" id="1_t8hjx"]
 [ext_resource type="Texture2D" uid="uid://m66jck0pvjwb" path="res://Escenarios principales/Computadora/monitor fp.png" id="1_w6too"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dnkhxkuyqvmmi" path="res://Escenarios principales/Computadora/menu apagado.png" id="3_w8sjg"]
 [ext_resource type="Texture2D" uid="uid://bqfkjiei2ui2f" path="res://Escenarios principales/Computadora/Iconos/Icono WH.png" id="4_301mx"]
 [ext_resource type="Texture2D" uid="uid://dqeyocxwtkkjq" path="res://Escenarios principales/Computadora/Iconos/Icono MSN.png" id="5_knaqd"]
+[ext_resource type="AudioStream" uid="uid://cv3xslmfna7du" path="res://Assets/Audio/Sonido/mouse click.wav" id="8_k88k0"]
 
 [node name="Computadora" type="Control"]
 layout_mode = 3
@@ -115,6 +116,13 @@ flat = true
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Sonidos" type="Node" parent="Audio"]
+
+[node name="Click" type="AudioStreamPlayer" parent="Audio/Sonidos"]
+stream = ExtResource("8_k88k0")
 
 [connection signal="pressed" from="Inicio" to="." method="_on_inicio_pressed"]
 [connection signal="pressed" from="Margen_pantalla/Orden_iconos/LGF" to="." method="_on_lgf_pressed"]

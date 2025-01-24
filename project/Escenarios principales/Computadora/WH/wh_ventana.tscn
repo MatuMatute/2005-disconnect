@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://canv3ldsmi35o"]
+[gd_scene load_steps=8 format=3 uid="uid://canv3ldsmi35o"]
 
 [ext_resource type="Script" path="res://Escenarios principales/Computadora/WH/wh_ventana.gd" id="1_vwqmt"]
 [ext_resource type="FontFile" uid="uid://ck15s64movp2k" path="res://Assets/Fonts/FrutigerLTStd-Light.otf" id="2_ttsqo"]
+[ext_resource type="FontFile" uid="uid://sg2wkwe5in7k" path="res://Assets/Fonts/FrutigerLTStd-Black.otf" id="3_glrda"]
 [ext_resource type="PackedScene" uid="uid://bd617wware8cd" path="res://Escenarios principales/Computadora/WH/waterhoops.tscn" id="4_2510n"]
-[ext_resource type="AudioStream" uid="uid://cle7ddg6ppyvh" path="res://Assets/Audio/Música/musi jueguito.ogg" id="4_gi6c1"]
+[ext_resource type="AudioStream" uid="uid://ca1ix4yhv70wd" path="res://Assets/Audio/Música/Marinerito.ogg" id="5_ffne6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55xus"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -15,6 +16,15 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue1xq"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.764706, 0, 0, 1)
+border_blend = true
 
 [node name="WH_ventana" type="MarginContainer"]
 custom_minimum_size = Vector2(1040, 824)
@@ -38,6 +48,9 @@ clip_contents = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_55xus")
 
+[node name="waterhoops" parent="Top" instance=ExtResource("4_2510n")]
+position = Vector2(8, 48)
+
 [node name="Titulo" type="Label" parent="Top"]
 custom_minimum_size = Vector2(220, 48)
 layout_mode = 2
@@ -53,7 +66,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Cerrar" type="Button" parent="Top"]
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 offset_left = 1008.0
 offset_right = 1040.0
@@ -61,10 +74,11 @@ offset_bottom = 31.0
 grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_glrda")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_ue1xq")
 text = "X"
-
-[node name="waterhoops" parent="Top" instance=ExtResource("4_2510n")]
-position = Vector2(8, 48)
 
 [node name="wh_interface" type="MarginContainer" parent="Top"]
 custom_minimum_size = Vector2(1024, 768)
@@ -91,7 +105,6 @@ size_flags_vertical = 0
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_ttsqo")
 theme_override_font_sizes/font_size = 32
-text = "puntuación"
 horizontal_alignment = 1
 uppercase = true
 
@@ -101,7 +114,7 @@ wait_time = 3.0
 [node name="Audio" type="Node" parent="."]
 
 [node name="Jingle" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("4_gi6c1")
+stream = ExtResource("5_ffne6")
 parameters/looping = true
 
 [connection signal="pressed" from="Top/Cerrar" to="." method="_on_cerrar_pressed"]

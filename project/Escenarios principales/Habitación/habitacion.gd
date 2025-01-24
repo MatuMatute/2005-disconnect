@@ -24,7 +24,6 @@ func _on_area_pc_body_entered(body: Node2D) -> void:
 				$Jugador/Mouse.show()
 				if Input.is_action_pressed("ui_select"):
 					$Animacion.play("zoom_camara")
-					print("hola")
 
 func _on_area_pc_body_exited(body: Node2D) -> void:
 	match Global.pausa:

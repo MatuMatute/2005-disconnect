@@ -1,6 +1,7 @@
 extends Control
 
 #Declaro las variables de los nodos de la interfaz
+@onready var click = $Audio/Sonidos/Click
 @onready var animacion = $Principal/Animaciones
 @onready var fade = $Principal/Fade
 @onready var logo = $Principal/logo_container/oddgames
@@ -63,6 +64,7 @@ func _process(_delta: float) -> void:
 
 # Al presionar el botón "Jugar" esta función se activa
 func _on_jugar_pressed() -> void:
+	click.play()
 	menu_container.hide()
 	fade.hide()
 	Global.pausa = false
@@ -73,6 +75,7 @@ func _on_animation_finished() -> void:
 	#computadora.show()
 
 func _on_probar_computadora_pressed() -> void:
+	click.play()
 	menu_container.hide()
 	fade.hide()
 	Global.pausa = false
@@ -80,6 +83,7 @@ func _on_probar_computadora_pressed() -> void:
 	$Principal/Computadora.show()
 
 func _on_opciones_pressed() -> void:
+	click.play()
 	menu_botones.hide()
 	opciones_container.show()
 
@@ -96,6 +100,7 @@ func _on_tipo_ventana_selected(index: int) -> void:
 
 # Al cambiar el modo de sincronizado vertical se activa esta función
 func _on_vsync_toggled(toggled_on: bool) -> void:
+	click.play()
 	match toggled_on:
 		true: valores_index["Sincronización vertical"] = 0
 		false: valores_index["Sincronización vertical"] = 1
@@ -116,11 +121,13 @@ func _on_aplicar_configuracion_pressed() -> void:
 
 # Se activa al presionar el botón de "Créditos"
 func _on_creditos_pressed() -> void:
+	click.play()
 	menu_botones.hide()
 	creditos_container.show()
 
 # El botón "Salir" hace que el juego se cierre.
 func _on_salir_pressed() -> void:
+	click.play()
 	get_tree().quit()
 
 # Pequeño mensaje aparece al colocar el mouse sobre el boton "Salir".
@@ -144,6 +151,7 @@ func _on_volver_menu_pressed() -> void:
 
 # Pausa el juego
 func pausar() -> void:
+	fade.self_modulate = Color(0.0, 0.0, 0.0, 0.5)
 	fade.show()
 	pausa_container.show()
 	Global.pausa = true
@@ -152,6 +160,7 @@ func pausar() -> void:
 # Resume el juego, cerrando el menú de pausa
 func resumir() -> void:
 	pausa_container.hide()
+	fade.self_modulate = Color(0.0, 0.0, 0.0, 0.0)
 	fade.hide()
 	Global.pausa = false
 	Global.resumido.emit()
@@ -159,7 +168,9 @@ func resumir() -> void:
 # Este botón hace un soft-reboot del juego
 func _on_regresar_menu_pressed() -> void:
 	cerrar_escenarios()
-	$"/root".add_child.call_deferred(habitacion.instantiate())
+	$"/root".add_child.call_deferred(habitacion.instantiate(), true)
+	fade.self_modulate = Color(0.0, 0.0, 0.0, 0.0)
+	fade.hide()
 	pausa_container.hide()
 	menu_container.show()
 

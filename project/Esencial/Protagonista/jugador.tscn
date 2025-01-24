@@ -55,3 +55,4 @@ scale = Vector2(0.125, 0.124999)
 visible = false
 position = Vector2(0, -384)
 sprite_frames = SubResource("SpriteFrames_8ngf2")
+frame_progress = 0.0656577

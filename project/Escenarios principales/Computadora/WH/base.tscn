@@ -15,9 +15,10 @@ texture = ExtResource("1_nfjl4")
 
 [node name="Colisión" type="CollisionPolygon2D" parent="."]
 build_mode = 1
-polygon = PackedVector2Array(257, 195, 254, 616, 355, 614, 415, 596, 466, 570, 509, 565, 553, 570, 610, 594, 657, 613, 765, 614, 766, 195, 721, 127, 721, 0, 300, 0, 300, 127)
+polygon = PackedVector2Array(257, 195, 254, 616, 355, 614, 415, 596, 466, 570, 509, 565, 553, 570, 610, 594, 657, 613, 765, 614, 766, 195, 720, 126, 656, 79, 581, 56, 504, 49, 430, 60, 356, 87, 300, 127)
 
 [node name="Area_despawn" type="Area2D" parent="."]
+monitoring = false
 
 [node name="Colision" type="CollisionShape2D" parent="Area_despawn"]
 position = Vector2(509, 578.25)

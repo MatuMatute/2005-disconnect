@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bd617wware8cd"]
+[gd_scene load_steps=6 format=3 uid="uid://bd617wware8cd"]
 
 [ext_resource type="Script" path="res://Escenarios principales/Computadora/WH/waterhoops.gd" id="1_q24sj"]
 [ext_resource type="Texture2D" uid="uid://c131uk1fweeed" path="res://Escenarios principales/Computadora/WH/Water Rings - Fondo.png" id="1_ynsjf"]
 [ext_resource type="PackedScene" uid="uid://di7wac0kwb6n1" path="res://Escenarios principales/Computadora/WH/base.tscn" id="2_er6eo"]
+[ext_resource type="PackedScene" uid="uid://bnsl7td4ak8qp" path="res://Escenarios principales/Computadora/WH/Aro/aro.tscn" id="3_x3adv"]
 [ext_resource type="PackedScene" uid="uid://b16k3nw23ufwc" path="res://Escenarios principales/Computadora/WH/Cono/cono.tscn" id="4_umta0"]
 
 [node name="waterhoops" type="Node2D"]
@@ -23,14 +24,49 @@ collision_mask = 4
 position = Vector2(0, 0)
 
 [node name="Cono" parent="." instance=ExtResource("4_umta0")]
-position = Vector2(400, 384)
+position = Vector2(370, 403)
 
 [node name="Cono2" parent="." instance=ExtResource("4_umta0")]
-position = Vector2(600, 384)
+position = Vector2(655, 403)
+
+[node name="Cono3" parent="." instance=ExtResource("4_umta0")]
+position = Vector2(450, 204)
+
+[node name="Cono4" parent="." instance=ExtResource("4_umta0")]
+position = Vector2(562, 204)
+
+[node name="Aro" parent="." instance=ExtResource("3_x3adv")]
+position = Vector2(509, 520)
+
+[node name="Aro2" parent="." instance=ExtResource("3_x3adv")]
+position = Vector2(434, 540)
+
+[node name="Aro3" parent="." instance=ExtResource("3_x3adv")]
+position = Vector2(368, 575)
+
+[node name="Aro4" parent="." instance=ExtResource("3_x3adv")]
+position = Vector2(590, 547)
+
+[node name="Aro5" parent="." instance=ExtResource("3_x3adv")]
+position = Vector2(662, 578)
+
+[node name="Aro6" parent="." instance=ExtResource("3_x3adv")]
+position = Vector2(721, 550)
+
+[node name="Aro7" parent="." instance=ExtResource("3_x3adv")]
+position = Vector2(312, 553)
+
+[node name="Aro8" parent="." instance=ExtResource("3_x3adv")]
+position = Vector2(368, 515)
+
+[node name="Aro9" parent="." instance=ExtResource("3_x3adv")]
+position = Vector2(659, 523)
+
+[node name="Aro10" parent="." instance=ExtResource("3_x3adv")]
+position = Vector2(452, 499)
 
 [node name="Aro_cooldown" type="Timer" parent="."]
 wait_time = 3.0
-autostart = true
 
 [connection signal="body_entered" from="Base/Area_despawn" to="." method="_on_area_despawn_body_entered"]
 [connection signal="timeout" from="Aro_cooldown" to="." method="_on_aro_cooldown_timeout"]

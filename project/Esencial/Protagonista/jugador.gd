@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Protagonista
 
 ## Menú de Ajustes
 @export_category("⚙ Ajustes")
@@ -13,7 +14,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	match Global.pausa:
 		true:
-			pass
+			velocity = Vector2(0, 0)
 		false:
 			movimiento()
 	

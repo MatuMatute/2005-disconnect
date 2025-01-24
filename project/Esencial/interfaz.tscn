@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgv7tstileblb"]
+[gd_scene load_steps=12 format=3 uid="uid://dgv7tstileblb"]
 
 [ext_resource type="Script" path="res://Esencial/interfaz.gd" id="1_06ybr"]
+[ext_resource type="PackedScene" uid="uid://d2me15mdwx6n7" path="res://Escenarios principales/Computadora/computadora.tscn" id="2_oqdvo"]
 [ext_resource type="FontFile" uid="uid://baeix8mw2fiye" path="res://Assets/Fonts/FrutigerLTStd-LightItalic.otf" id="2_x7k2w"]
 [ext_resource type="FontFile" uid="uid://ck15s64movp2k" path="res://Assets/Fonts/FrutigerLTStd-Light.otf" id="3_6idcw"]
 [ext_resource type="AudioStream" uid="uid://ci1cevosqewoh" path="res://Assets/Audio/Sonido/teclado lento.wav" id="4_gdnrm"]
@@ -235,12 +236,16 @@ tracks/7/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_43tpg"]
+resource_name = "zoom_camara"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qiku4"]
 _data = {
 "RESET": SubResource("Animation_vlqhu"),
 "fade_in": SubResource("Animation_m2mml"),
 "fade_out": SubResource("Animation_1bi1t"),
-"odd-games": SubResource("Animation_tkyx1")
+"odd-games": SubResource("Animation_tkyx1"),
+"zoom_camara": SubResource("Animation_43tpg")
 }
 
 [node name="Interfaz" type="Control"]
@@ -279,6 +284,9 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 0
 horizontal_alignment = 1
+
+[node name="Computadora" parent="Principal" instance=ExtResource("2_oqdvo")]
+visible = false
 
 [node name="Fade" type="ColorRect" parent="Principal"]
 self_modulate = Color(1, 1, 1, 0)
@@ -448,6 +456,13 @@ text = "odd-games
 Camila Martínez
 Matías Nahuel González Sandoval
 Florencia Belate Dietrich
+Música
+Human Feeling - Patroux
+The Land Of Misty Dreams by Ahmadreza Safarian
+Novo Dia - Jangwa
+Beat Mekanik - Fracture
+Julian Winter - Super Soft-Soaped
+
 Beta testers: PRÓXIMAMENTE"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -477,11 +492,19 @@ grow_vertical = 2
 
 [node name="Titulo" type="Label" parent="Principal/menu_container"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_x7k2w")
+theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 120
 text = "2005"
 horizontal_alignment = 1
-uppercase = true
+
+[node name="Label" type="Label" parent="Principal/menu_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_x7k2w")
+theme_override_font_sizes/font_size = 48
+text = "disconnect"
+horizontal_alignment = 1
 
 [node name="Jugar" type="Button" parent="Principal/menu_container"]
 custom_minimum_size = Vector2(160, 0)
@@ -536,7 +559,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 24
-text = "0.1.4"
+text = "0.2.0"
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -583,7 +606,7 @@ libraries = {
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="Musica" type="AudioStreamPlayer" parent="Audio"]
+[node name="Música" type="Node" parent="Audio"]
 
 [node name="Sonidos" type="Node" parent="Audio"]
 

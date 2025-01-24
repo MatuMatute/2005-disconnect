@@ -10,6 +10,7 @@ extends Control
 @onready var creditos_container = $Principal/creditos_container
 @onready var pausa_container = $Principal/pausa_container
 @onready var fishing_interface = $Principal/fishing_interface
+#@onready var computadora = $Principal/Computadora
 @onready var aplicar = $Principal/opciones_container/volver_container/Aplicar
 @onready var nos_vemos = $Principal/menu_container/Nos_vemos
 
@@ -44,6 +45,7 @@ var valores_index = {
 
 # Variables adicionales importantes más adelante
 var habitacion: Resource
+var camara: Resource
 
 # Esta función se llama la primera vez que se llama al nodo.
 func _ready() -> void:
@@ -63,14 +65,18 @@ func _on_jugar_pressed() -> void:
 	menu_container.hide()
 	fade.hide()
 	Global.pausa = false
+	$"/root/Habitacion/Animacion".animation_finished.connect(_on_animation_finished)
+
+func _on_animation_finished() -> void:
+	pass
+	#computadora.show()
 
 func _on_probar_computadora_pressed() -> void:
-	var computadora = ResourceLoader.load("res://Escenarios principales/Computadora/computadora.tscn")
 	menu_container.hide()
 	fade.hide()
 	Global.pausa = false
 	cerrar_escenarios()
-	$Principal/fishing_interface.add_sibling(computadora.instantiate())
+	$Principal/Computadora.show()
 
 func _on_opciones_pressed() -> void:
 	menu_container.hide()
@@ -140,12 +146,14 @@ func pausar() -> void:
 	fade.show()
 	pausa_container.show()
 	Global.pausa = true
+	Global.pausado.emit()
 
 # Resume el juego, cerrando el menú de pausa
 func resumir() -> void:
 	pausa_container.hide()
 	fade.hide()
 	Global.pausa = false
+	Global.resumido.emit()
 
 # Este botón hace un soft-reboot del juego
 func _on_regresar_menu_pressed() -> void:

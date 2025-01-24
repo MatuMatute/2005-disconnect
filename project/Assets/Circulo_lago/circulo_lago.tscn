@@ -1,36 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://wf2r7p6tyov7"]
+[gd_scene load_steps=3 format=3 uid="uid://wf2r7p6tyov7"]
 
 [ext_resource type="Texture2D" uid="uid://kpptvxyenvsw" path="res://Assets/Circulo_lago/Circulo1.png" id="1_b7y4v"]
-[ext_resource type="Script" path="res://Assets/Circulo_lago/circulo_lago.gd" id="1_jrd3w"]
 [ext_resource type="Texture2D" uid="uid://8rxnydpavrr0" path="res://Assets/Circulo_lago/Circulo2.png" id="2_b1ov8"]
-[ext_resource type="PackedScene" uid="uid://bpwwjons4wlvj" path="res://Assets/Pez_azul/pez_azul.tscn" id="3_owuju"]
 
 [node name="Circulo_lago" type="Node2D"]
-script = ExtResource("1_jrd3w")
 
 [node name="Sprite_circulogrande" type="Sprite2D" parent="."]
 texture = ExtResource("1_b7y4v")
 
-[node name="Pez_azul" parent="Sprite_circulogrande" instance=ExtResource("3_owuju")]
-position = Vector2(-130, 0)
-
-[node name="Pez_azul2" parent="Sprite_circulogrande" instance=ExtResource("3_owuju")]
-position = Vector2(-91, -147)
-
-[node name="Pez_azul3" parent="Sprite_circulogrande" instance=ExtResource("3_owuju")]
-position = Vector2(129, -85)
-
-[node name="Pez_azul4" parent="Sprite_circulogrande" instance=ExtResource("3_owuju")]
-position = Vector2(7, 151)
-
 [node name="Sprite_circulochico" type="Sprite2D" parent="."]
 texture = ExtResource("2_b1ov8")
-
-[node name="Pez_azul" parent="Sprite_circulochico" instance=ExtResource("3_owuju")]
-position = Vector2(-30, -30)
-
-[node name="Pez_azul2" parent="Sprite_circulochico" instance=ExtResource("3_owuju")]
-position = Vector2(38, 10)
 
 [node name="Barrera" type="StaticBody2D" parent="."]
 collision_layer = 4
@@ -38,4 +17,4 @@ collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Barrera"]
 build_mode = 1
-polygon = PackedVector2Array(0, -224, 82, -208, 138, -175, 179, -132, 208, -81, 224, 0, 208, 81, 179, 132, 138, 175, 82, 208, 0, 224, -82, 208, -138, 175, -179, 132, -208, 81, -224, 0, -208, -81, -179, -132, -138, -175, -82, -208)
+polygon = PackedVector2Array(0, -233, 82, -219, 145, -183, 190, -137, 220, -83, 236, 0, 222, 84, 192, 139, 145, 189, 82, 223, 0, 238, -83, 223, -146, 186, -192, 138, -220, 84, -236, 0, -218, -85, -187, -140, -142, -184, -84, -218)

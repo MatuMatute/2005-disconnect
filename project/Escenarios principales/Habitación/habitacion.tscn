@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://rgjjerg5bvua"]
+[gd_scene load_steps=10 format=3 uid="uid://rgjjerg5bvua"]
 
 [ext_resource type="PackedScene" uid="uid://cqrrxgogf7ef1" path="res://Esencial/Cámara/camara.tscn" id="1_8gu3x"]
 [ext_resource type="Script" path="res://Escenarios principales/Habitación/habitacion.gd" id="1_pspuk"]
@@ -6,11 +6,95 @@
 [ext_resource type="Texture2D" uid="uid://fr62eda6p0rc" path="res://Escenarios principales/Habitación/final room concept - lado derecho (byn).png" id="3_1t6by"]
 [ext_resource type="PackedScene" uid="uid://dxw216m87unqw" path="res://Esencial/Protagonista/jugador.tscn" id="4_wfud1"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bntjq"]
+size = Vector2(464.5, 78)
+
+[sub_resource type="Animation" id="Animation_n3m8x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camara:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1920, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camara:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camara:anchor_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_h7181"]
+resource_name = "zoom_camara"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camara:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 540), Vector2(1380, 438)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camara:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(7, 7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camara:anchor_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wnui"]
+_data = {
+"RESET": SubResource("Animation_n3m8x"),
+"zoom_camara": SubResource("Animation_h7181")
+}
+
 [node name="Habitacion" type="Node2D" groups=["Escenarios"]]
 script = ExtResource("1_pspuk")
-
-[node name="Camara" parent="." instance=ExtResource("1_8gu3x")]
-position = Vector2(1920, 0)
 
 [node name="Ubicacion" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -28,5 +112,22 @@ centered = false
 build_mode = 1
 polygon = PackedVector2Array(102, 1023, 166, 906, 169, 708, 824, 707, 819, 848, 898, 850, 1026, 677, 1144, 679, 1141, 774, 1730, 774, 1728, 679, 2061, 675, 2068, 723, 2111, 764, 2160, 780, 2263, 782, 2330, 771, 2371, 717, 2519, 717, 2519, 755, 2569, 763, 3029, 760, 2986, 845, 2997, 952, 3280, 950, 3293, 836, 3255, 751, 3423, 755, 3429, 675, 3612, 675, 3628, 720, 3840, 720, 3840, 1080, 102, 1080)
 
+[node name="Area_PC" type="Area2D" parent="."]
+position = Vector2(1390, 813)
+
+[node name="Colision" type="CollisionShape2D" parent="Area_PC"]
+shape = SubResource("RectangleShape2D_bntjq")
+
 [node name="Jugador" parent="." instance=ExtResource("4_wfud1")]
 position = Vector2(3559, 682)
+
+[node name="Camara" parent="." instance=ExtResource("1_8gu3x")]
+position = Vector2(1920, 0)
+
+[node name="Animacion" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5wnui")
+}
+
+[connection signal="body_entered" from="Area_PC" to="." method="_on_area_pc_body_entered"]
+[connection signal="body_exited" from="Area_PC" to="." method="_on_area_pc_body_exited"]

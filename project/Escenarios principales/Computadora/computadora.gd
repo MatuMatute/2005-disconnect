@@ -4,6 +4,8 @@ extends Control
 @onready var LGF = $Margen_pantalla/Orden_iconos/LGF
 @onready var WRT = $Margen_pantalla/Orden_iconos/WRT
 @onready var MSN = $Margen_pantalla/Orden_iconos/MSN
+@onready var menu_inicio = $Inicio/Menu_inicio
+@onready var apagar = $Inicio/Menu_inicio/Apagar
 
 # Variable para saber si hay programa abierto
 var programa_abierto: bool = false
@@ -32,6 +34,13 @@ func _on_lgf_pressed() -> void:
 	$Margen_pantalla/Orden_iconos.add_sibling(programa)
 	programa_abierto = true
 	programa.cerrado.connect(programa_cerrado)
+
+func _on_inicio_pressed() -> void:
+	match menu_inicio.visible:
+		true:
+			menu_inicio.hide()
+		false:
+			menu_inicio.show()
 
 func programa_cerrado() -> void:
 	programa_abierto = false

@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpwwjons4wlvj"]
+
+[ext_resource type="Script" path="res://Assets/Pez/pez_azul.gd" id="1_knuuj"]
+[ext_resource type="Texture2D" uid="uid://32apuug1lk8f" path="res://Assets/Pez/Pez1.png" id="2_lobdl"]
+[ext_resource type="Texture2D" uid="uid://b4afglomfxn58" path="res://Assets/Pez/Pez2.png" id="3_4jlpe"]
+[ext_resource type="Texture2D" uid="uid://ncssl4gdp6lg" path="res://Assets/Pez/Pez3.png" id="4_4ooam"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s5pfv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lobdl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4jlpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4ooam")
+}],
+"loop": false,
+"name": &"Abrir",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4ooam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4jlpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lobdl")
+}],
+"loop": false,
+"name": &"Cerrar",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otbha"]
+size = Vector2(34, 14)
+
+[node name="Pez_azul" type="Area2D" groups=["Peces"]]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_knuuj")
+min_tiempo = 5.0
+max_tiempo = 7.0
+color_pez = Color(0.38774, 0.579268, 1, 1)
+puntos = 100
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s5pfv")
+animation = &"Abrir"
+
+[node name="Colision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_otbha")
+
+[node name="Boca" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Boca" to="." method="_on_boca_timeout"]

@@ -1,13 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsxpanlm44hli"]
+[gd_scene load_steps=12 format=3 uid="uid://bsxpanlm44hli"]
 
 [ext_resource type="FontFile" uid="uid://sg2wkwe5in7k" path="res://Assets/Fonts/FrutigerLTStd-Black.otf" id="1_6q68q"]
 [ext_resource type="Script" path="res://Escenarios principales/Computadora/Ventana/lgf_ventana.gd" id="1_c0dx2"]
 [ext_resource type="FontFile" uid="uid://ck15s64movp2k" path="res://Assets/Fonts/FrutigerLTStd-Light.otf" id="1_gli52"]
 [ext_resource type="PackedScene" uid="uid://bwc84fi7187th" path="res://Escenarios principales/Computadora/LGF/letsgofishing.tscn" id="3_vjen8"]
 [ext_resource type="FontFile" uid="uid://b2gn8i5wh2cog" path="res://Assets/Fonts/FrutigerLTStd-BlackItalic.otf" id="4_70ast"]
+[ext_resource type="FontFile" uid="uid://bc1c5bsacf0y8" path="res://Assets/Fonts/FrutigerLTStd-Bold.otf" id="5_vgeg1"]
+[ext_resource type="AudioStream" uid="uid://dbem1m1yt1rxk" path="res://Assets/Audio/Música/Pipipupu.ogg" id="6_vnc11"]
+[ext_resource type="Texture2D" uid="uid://dfhk5askpdplw" path="res://Assets/Pez/Pescado Inventario.png" id="6_yjq20"]
+[ext_resource type="AudioStream" uid="uid://dwlrbcmf02wtp" path="res://Assets/Audio/Música/Beat-Mekanik-Fracture.ogg" id="7_05fuh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55xus"]
-bg_color = Color(0.35106, 0.692758, 0.318521, 1)
+bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 8
 border_width_top = 48
 border_width_right = 8
@@ -44,24 +48,30 @@ size_flags_vertical = 4
 script = ExtResource("1_c0dx2")
 
 [node name="Top" type="Panel" parent="."]
+clip_contents = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_55xus")
 
-[node name="Titulo" type="Label" parent="."]
-custom_minimum_size = Vector2(240, 48)
+[node name="Titulo" type="Label" parent="Top"]
+custom_minimum_size = Vector2(160, 48)
 layout_mode = 2
+offset_right = 160.0
+offset_bottom = 48.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_gli52")
 theme_override_font_sizes/font_size = 32
-text = "Let's go fishing!"
+text = "Fish It!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Cerrar" type="Button" parent="."]
+[node name="Cerrar" type="Button" parent="Top"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
+offset_left = 992.0
+offset_right = 1040.0
+offset_bottom = 40.0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -70,62 +80,79 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_bs6vm")
 text = "X"
 
-[node name="letsgofishing" parent="." instance=ExtResource("3_vjen8")]
+[node name="letsgofishing" parent="Top" instance=ExtResource("3_vjen8")]
+position = Vector2(8, 48)
 
-[node name="fishing_interface" type="MarginContainer" parent="."]
+[node name="fishing_interface" type="MarginContainer" parent="Top"]
 custom_minimum_size = Vector2(1024, 768)
 layout_mode = 2
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 1032.0
+offset_bottom = 824.0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="fishing_container" type="HBoxContainer" parent="fishing_interface"]
-custom_minimum_size = Vector2(768, 0)
+[node name="puntuacion_container" type="MarginContainer" parent="Top/fishing_interface"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_constants/separation = 30
-alignment = 1
+theme_override_constants/margin_left = 112
+theme_override_constants/margin_top = 23
 
-[node name="Nivel" type="Label" parent="fishing_interface/fishing_container"]
+[node name="Puntuacion" type="Label" parent="Top/fishing_interface/puntuacion_container"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
-theme_override_constants/shadow_offset_x = -4
-theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("4_70ast")
+theme_override_fonts/font = ExtResource("5_vgeg1")
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Tiempo" type="Label" parent="fishing_interface/fishing_container"]
+[node name="tiempo_container" type="MarginContainer" parent="Top/fishing_interface"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
-theme_override_constants/shadow_offset_x = -4
-theme_override_constants/shadow_offset_y = 4
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 81
+
+[node name="Tiempo" type="Label" parent="Top/fishing_interface/tiempo_container"]
+custom_minimum_size = Vector2(93, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("4_70ast")
+theme_override_fonts/font = ExtResource("5_vgeg1")
 theme_override_font_sizes/font_size = 48
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Puntuacion" type="Label" parent="fishing_interface/fishing_container"]
+[node name="inv_container" type="HBoxContainer" parent="Top/fishing_interface"]
+custom_minimum_size = Vector2(768, 96)
 layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
-theme_override_constants/shadow_offset_x = -4
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("4_70ast")
-theme_override_font_sizes/font_size = 32
-horizontal_alignment = 1
-uppercase = true
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
-[node name="Mostrar_nivel" type="Label" parent="fishing_interface"]
+[node name="pez_azul" type="HBoxContainer" parent="Top/fishing_interface/inv_container"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Textura" type="TextureRect" parent="Top/fishing_interface/inv_container/pez_azul"]
+self_modulate = Color(0.699023, 0.799265, 1, 1)
+layout_mode = 2
+texture = ExtResource("6_yjq20")
+stretch_mode = 2
+
+[node name="Conteo" type="Label" parent="Top/fishing_interface/inv_container/pez_azul"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("5_vgeg1")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+
+[node name="Mostrar_nivel" type="Label" parent="Top/fishing_interface"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.588235)
@@ -136,7 +163,18 @@ theme_override_fonts/font = ExtResource("4_70ast")
 theme_override_font_sizes/font_size = 72
 uppercase = true
 
-[connection signal="comenzar_nivel" from="." to="letsgofishing" method="_on_comenzar_nivel"]
-[connection signal="pressed" from="Cerrar" to="." method="_on_cerrar_pressed"]
-[connection signal="cambiar_nivel" from="letsgofishing" to="." method="_on_letsgofishing_cambiar_nivel"]
-[connection signal="cambiar_puntuacion" from="letsgofishing" to="." method="_on_letsgofishing_cambiar_puntuacion"]
+[node name="Transicion" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Jingle" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_vnc11")
+parameters/looping = true
+
+[node name="Serio" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_05fuh")
+
+[connection signal="comenzar_nivel" from="." to="Top/letsgofishing" method="_on_comenzar_nivel"]
+[connection signal="pressed" from="Top/Cerrar" to="." method="_on_cerrar_pressed"]
+[connection signal="cambiar_puntuacion" from="Top/letsgofishing" to="." method="_on_letsgofishing_cambiar_puntuacion"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2me15mdwx6n7"]
+[gd_scene load_steps=8 format=3 uid="uid://d2me15mdwx6n7"]
 
 [ext_resource type="Script" path="res://Escenarios principales/Computadora/computadora.gd" id="1_t8hjx"]
 [ext_resource type="Texture2D" uid="uid://m66jck0pvjwb" path="res://Escenarios principales/Computadora/monitor fp.png" id="1_w6too"]
 [ext_resource type="Texture2D" uid="uid://b2m08dkxje675" path="res://Escenarios principales/Computadora/Iconos/Icono LGF.png" id="2_ooisy"]
 [ext_resource type="FontFile" uid="uid://cysc5spliqiyf" path="res://Assets/Fonts/FrutigerLTStd-Roman.otf" id="3_ivula"]
+[ext_resource type="Texture2D" uid="uid://dnkhxkuyqvmmi" path="res://Escenarios principales/Computadora/menu apagado.png" id="3_w8sjg"]
 [ext_resource type="Texture2D" uid="uid://bqfkjiei2ui2f" path="res://Escenarios principales/Computadora/Iconos/Icono WH.png" id="4_301mx"]
 [ext_resource type="Texture2D" uid="uid://dqeyocxwtkkjq" path="res://Escenarios principales/Computadora/Iconos/Icono MSN.png" id="5_knaqd"]
 
@@ -21,6 +22,33 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_w6too")
+
+[node name="Inicio" type="Button" parent="."]
+layout_mode = 2
+offset_left = 158.0
+offset_top = 946.0
+offset_right = 343.0
+offset_bottom = 1005.0
+flat = true
+
+[node name="Menu_inicio" type="TextureRect" parent="Inicio"]
+visible = false
+layout_mode = 0
+offset_left = -6.0
+offset_top = -141.0
+offset_right = 229.0
+offset_bottom = -3.0
+rotation = 0.0174533
+texture = ExtResource("3_w8sjg")
+
+[node name="Apagar" type="Button" parent="Inicio/Menu_inicio"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 100.0
+offset_right = 228.0
+offset_bottom = 131.0
+rotation = -0.0261799
+flat = true
 
 [node name="Margen_pantalla" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -44,9 +72,10 @@ theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0, 0, 1, 1)
 theme_override_fonts/font = ExtResource("3_ivula")
 theme_override_font_sizes/font_size = 32
-text = "Let's go fishing!"
+text = "Fish It!"
 icon = ExtResource("2_ooisy")
 flat = true
+text_overrun_behavior = 1
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -62,7 +91,7 @@ theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0, 0, 1, 1)
 theme_override_fonts/font = ExtResource("3_ivula")
 theme_override_font_sizes/font_size = 32
-text = "Water Ring Toss"
+text = "Water Rings"
 icon = ExtResource("4_301mx")
 flat = true
 autowrap_mode = 2
@@ -80,11 +109,12 @@ theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0, 0, 1, 1)
 theme_override_fonts/font = ExtResource("3_ivula")
 theme_override_font_sizes/font_size = 32
-text = "MSN"
+text = "Chat"
 icon = ExtResource("5_knaqd")
 flat = true
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
 
+[connection signal="pressed" from="Inicio" to="." method="_on_inicio_pressed"]
 [connection signal="pressed" from="Margen_pantalla/Orden_iconos/LGF" to="." method="_on_lgf_pressed"]

@@ -5,14 +5,15 @@ extends Control
 @onready var fade = $Principal/Fade
 @onready var logo = $Principal/logo_container/oddgames
 @onready var presenta = $Principal/logo_container/presenta
-@onready var menu_container = $Principal/menu_container
-@onready var opciones_container = $Principal/opciones_container
-@onready var creditos_container = $Principal/creditos_container
+@onready var menu_container = $Principal/Menu
+@onready var menu_botones = $Principal/Menu/menu_botones
+@onready var opciones_container = $Principal/Menu/opciones_container
+@onready var creditos_container = $Principal/Menu/creditos_container
 @onready var pausa_container = $Principal/pausa_container
 @onready var fishing_interface = $Principal/fishing_interface
 #@onready var computadora = $Principal/Computadora
-@onready var aplicar = $Principal/opciones_container/volver_container/Aplicar
-@onready var nos_vemos = $Principal/menu_container/Nos_vemos
+@onready var aplicar = $Principal/Menu/opciones_container/volver_container/Aplicar
+@onready var nos_vemos = $Principal/Menu/menu_botones/Nos_vemos
 
 # Asigno las resoluciones de pantalla posibles como valores en un array para simplificar el cambio de resolucion de pantalla
 var resoluciones: Array = [
@@ -79,7 +80,7 @@ func _on_probar_computadora_pressed() -> void:
 	$Principal/Computadora.show()
 
 func _on_opciones_pressed() -> void:
-	menu_container.hide()
+	menu_botones.hide()
 	opciones_container.show()
 
 func _on_resolucion_item_selected(index: int) -> void:
@@ -115,7 +116,7 @@ func _on_aplicar_configuracion_pressed() -> void:
 
 # Se activa al presionar el botón de "Créditos"
 func _on_creditos_pressed() -> void:
-	menu_container.hide()
+	menu_botones.hide()
 	creditos_container.show()
 
 # El botón "Salir" hace que el juego se cierre.
@@ -134,11 +135,11 @@ func _on_salir_mouse_exited() -> void:
 func _on_volver_menu_pressed() -> void:
 	match opciones_container.visible:
 		true:
-			menu_container.show()
+			menu_botones.show()
 			opciones_container.hide()
 	match creditos_container.visible:
 		true:
-			menu_container.show()
+			menu_botones.show()
 			creditos_container.hide()
 
 # Pausa el juego

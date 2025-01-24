@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b16k3nw23ufwc"]
+
+[ext_resource type="Texture2D" uid="uid://bfcyfr0l724ph" path="res://Escenarios principales/Computadora/WH/Cono/Cono.png" id="1_qdt0u"]
+
+[node name="Cono" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_qdt0u")
+
+[node name="Colision" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PackedVector2Array(-22, 62, 0, 68, 22, 61, 0, -68)

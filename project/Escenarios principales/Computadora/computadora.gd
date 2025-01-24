@@ -16,7 +16,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	match programa_abierto:
 		false:
 			LGF.disabled = false
@@ -35,6 +35,13 @@ func _on_lgf_pressed() -> void:
 	programa_abierto = true
 	programa.cerrado.connect(programa_cerrado)
 
+func _on_wrt_pressed() -> void:
+	programa = ResourceLoader.load("res://Escenarios principales/Computadora/WH/wh_ventana.tscn")
+	programa = programa.instantiate()
+	$Margen_pantalla/Orden_iconos.add_sibling(programa)
+	programa_abierto = true
+	programa.cerrado.connect(programa_cerrado)
+
 func _on_inicio_pressed() -> void:
 	match menu_inicio.visible:
 		true:
@@ -44,3 +51,4 @@ func _on_inicio_pressed() -> void:
 
 func programa_cerrado() -> void:
 	programa_abierto = false
+	programa.cerrado.disconnect(programa_cerrado)

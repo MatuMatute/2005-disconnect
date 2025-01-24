@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 # Declaro los nodos de la caña
 @onready var Cuerda = $Cuerda
-@onready var Anzuelo = $Anzuelo
 @onready var Sombra = $Sombra
 @onready var Colision_anzuelo = $Anzuelo/Colision_anzuelo
 
@@ -18,7 +17,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
 	# Ajustar la posición del anzuelo al de la cuerda
-	Anzuelo.position = Cuerda.get_point_position(1)
+	$Anzuelo.position = Cuerda.get_point_position(1)
 	# Función de movimiento
 	match pescando:
 		false: 

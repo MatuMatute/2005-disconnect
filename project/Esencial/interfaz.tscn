@@ -1,10 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgv7tstileblb"]
+[gd_scene load_steps=18 format=3 uid="uid://dgv7tstileblb"]
 
 [ext_resource type="Script" path="res://Esencial/interfaz.gd" id="1_06ybr"]
 [ext_resource type="PackedScene" uid="uid://d2me15mdwx6n7" path="res://Escenarios principales/Computadora/computadora.tscn" id="2_oqdvo"]
 [ext_resource type="FontFile" uid="uid://baeix8mw2fiye" path="res://Assets/Fonts/FrutigerLTStd-LightItalic.otf" id="2_x7k2w"]
 [ext_resource type="FontFile" uid="uid://ck15s64movp2k" path="res://Assets/Fonts/FrutigerLTStd-Light.otf" id="3_6idcw"]
 [ext_resource type="AudioStream" uid="uid://ci1cevosqewoh" path="res://Assets/Audio/Sonido/teclado lento.wav" id="4_gdnrm"]
+[ext_resource type="Texture2D" uid="uid://bs1vwdqvsmh7t" path="res://Esencial/Menú principal/logo menu.png" id="5_tr0f5"]
+[ext_resource type="Texture2D" uid="uid://m66jck0pvjwb" path="res://Escenarios principales/Computadora/monitor fp.png" id="5_xtodr"]
+[ext_resource type="Texture2D" uid="uid://yvli2pkk2okx" path="res://Esencial/Menú principal/menu_boton_jugar.png" id="6_ycu6n"]
+[ext_resource type="Texture2D" uid="uid://datm77ro0vjy6" path="res://Esencial/Menú principal/menu_boton_opciones.png" id="7_cvj7y"]
+[ext_resource type="Texture2D" uid="uid://cl728q5wxcwjk" path="res://Esencial/Menú principal/menu_boton_creditos.png" id="9_1f27r"]
+[ext_resource type="Texture2D" uid="uid://be55qr4fmnnmc" path="res://Esencial/Menú principal/menu_boton_salir.png" id="10_iw63g"]
 
 [sub_resource type="Animation" id="Animation_vlqhu"]
 length = 0.001
@@ -83,7 +89,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../menu_container:visible")
+tracks/6/path = NodePath("../Menu/menu_botones:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -103,6 +109,30 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Menu:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_m2mml"]
@@ -197,7 +227,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(6, 7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.588235)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -214,7 +244,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../menu_container:visible")
+tracks/6/path = NodePath("../Menu/menu_botones:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -234,6 +264,30 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Menu:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_43tpg"]
@@ -288,7 +342,230 @@ horizontal_alignment = 1
 [node name="Computadora" parent="Principal" instance=ExtResource("2_oqdvo")]
 visible = false
 
+[node name="Menu" type="TextureRect" parent="Principal"]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("5_xtodr")
+
+[node name="menu_botones" type="VBoxContainer" parent="Principal/Menu"]
+visible = false
+custom_minimum_size = Vector2(693, 293)
+layout_mode = 2
+offset_left = 613.0
+offset_top = 110.0
+offset_right = 1306.0
+offset_bottom = 969.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="Logo" type="TextureRect" parent="Principal/Menu/menu_botones"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_tr0f5")
+stretch_mode = 2
+
+[node name="Separador" type="HSeparator" parent="Principal/Menu/menu_botones"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Jugar" type="TextureButton" parent="Principal/Menu/menu_botones"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_ycu6n")
+
+[node name="probar_computadora" type="Button" parent="Principal/Menu/menu_botones"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Probar computadora"
+
+[node name="Opciones" type="TextureButton" parent="Principal/Menu/menu_botones"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("7_cvj7y")
+
+[node name="Creditos" type="TextureButton" parent="Principal/Menu/menu_botones"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("9_1f27r")
+
+[node name="Salir" type="TextureButton" parent="Principal/Menu/menu_botones"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("10_iw63g")
+
+[node name="Nos_vemos" type="Label" parent="Principal/Menu/menu_botones"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_x7k2w")
+theme_override_font_sizes/font_size = 24
+text = "¡Nos vemos pronto!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Version" type="Label" parent="Principal/Menu/menu_botones"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 24
+text = "0.2.1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="opciones_container" type="VBoxContainer" parent="Principal/Menu"]
+visible = false
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.0
+offset_top = -95.0
+offset_right = 268.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="volver_container" type="HBoxContainer" parent="Principal/Menu/opciones_container"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Volver_menu2" type="Button" parent="Principal/Menu/opciones_container/volver_container"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Volver"
+
+[node name="Aplicar" type="Button" parent="Principal/Menu/opciones_container/volver_container"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Aplicar configuración"
+
+[node name="resolucion_container" type="HBoxContainer" parent="Principal/Menu/opciones_container"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Resolucion" type="Label" parent="Principal/Menu/opciones_container/resolucion_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Resolución de pantalla"
+
+[node name="Opcion" type="OptionButton" parent="Principal/Menu/opciones_container/resolucion_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+alignment = 1
+selected = 4
+item_count = 6
+popup/item_0/text = "640 x 360"
+popup/item_1/text = "854 x 480"
+popup/item_1/id = 1
+popup/item_2/text = "1280 x 720"
+popup/item_2/id = 2
+popup/item_3/text = "1366 x 768"
+popup/item_3/id = 3
+popup/item_4/text = "1920 x 1080"
+popup/item_4/id = 4
+popup/item_5/text = "2560 x 1440"
+popup/item_5/id = 5
+
+[node name="ventana_container" type="HBoxContainer" parent="Principal/Menu/opciones_container"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Ventana" type="Label" parent="Principal/Menu/opciones_container/ventana_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Modo de ventana"
+
+[node name="Opcion" type="OptionButton" parent="Principal/Menu/opciones_container/ventana_container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+alignment = 1
+selected = 2
+item_count = 3
+popup/item_0/text = "Ventana"
+popup/item_1/text = "Pantalla completa"
+popup/item_1/id = 1
+popup/item_2/text = "Sin bordes"
+popup/item_2/id = 2
+
+[node name="Vsync" type="CheckButton" parent="Principal/Menu/opciones_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+button_pressed = true
+text = "Sincronización vertical"
+expand_icon = true
+
+[node name="creditos_container" type="VBoxContainer" parent="Principal/Menu"]
+visible = false
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -342.5
+offset_top = -233.5
+offset_right = 342.5
+offset_bottom = 233.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Creditos" type="Label" parent="Principal/Menu/creditos_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "odd-games
+Camila Martínez
+Matías Nahuel González Sandoval
+Florencia Belate Dietrich
+Música
+Human Feeling - Patroux
+The Land Of Misty Dreams by Ahmadreza Safarian
+Novo Dia - Jangwa
+Beat Mekanik - Fracture
+Julian Winter - Super Soft-Soaped
+
+Beta testers: PRÓXIMAMENTE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volver_menu" type="Button" parent="Principal/Menu/creditos_container"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Volver"
+
 [node name="Fade" type="ColorRect" parent="Principal"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -304,6 +581,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -167.5
+offset_top = -111.0
+offset_right = 167.5
+offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
@@ -337,231 +618,6 @@ size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 32
 text = "Salir"
-
-[node name="opciones_container" type="VBoxContainer" parent="Principal"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -163.5
-offset_top = -77.0
-offset_right = 163.5
-offset_bottom = 77.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-
-[node name="volver_container" type="HBoxContainer" parent="Principal/opciones_container"]
-layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="Volver_menu2" type="Button" parent="Principal/opciones_container/volver_container"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "Volver"
-
-[node name="Aplicar" type="Button" parent="Principal/opciones_container/volver_container"]
-visible = false
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "Aplicar configuración"
-
-[node name="resolucion_container" type="HBoxContainer" parent="Principal/opciones_container"]
-layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="Resolucion" type="Label" parent="Principal/opciones_container/resolucion_container"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "Resolución de pantalla"
-
-[node name="Opcion" type="OptionButton" parent="Principal/opciones_container/resolucion_container"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-alignment = 1
-selected = 4
-item_count = 6
-popup/item_0/text = "640 x 360"
-popup/item_1/text = "854 x 480"
-popup/item_1/id = 1
-popup/item_2/text = "1280 x 720"
-popup/item_2/id = 2
-popup/item_3/text = "1366 x 768"
-popup/item_3/id = 3
-popup/item_4/text = "1920 x 1080"
-popup/item_4/id = 4
-popup/item_5/text = "2560 x 1440"
-popup/item_5/id = 5
-
-[node name="ventana_container" type="HBoxContainer" parent="Principal/opciones_container"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Ventana" type="Label" parent="Principal/opciones_container/ventana_container"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "Modo de ventana"
-
-[node name="Opcion" type="OptionButton" parent="Principal/opciones_container/ventana_container"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-alignment = 1
-selected = 2
-item_count = 3
-popup/item_0/text = "Ventana"
-popup/item_1/text = "Pantalla completa"
-popup/item_1/id = 1
-popup/item_2/text = "Sin bordes"
-popup/item_2/id = 2
-
-[node name="Vsync" type="CheckButton" parent="Principal/opciones_container"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-button_pressed = true
-text = "Sincronización vertical"
-expand_icon = true
-
-[node name="creditos_container" type="VBoxContainer" parent="Principal"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -130.5
-offset_top = -84.0
-offset_right = 130.5
-offset_bottom = 84.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-
-[node name="Creditos" type="Label" parent="Principal/creditos_container"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "odd-games
-Camila Martínez
-Matías Nahuel González Sandoval
-Florencia Belate Dietrich
-Música
-Human Feeling - Patroux
-The Land Of Misty Dreams by Ahmadreza Safarian
-Novo Dia - Jangwa
-Beat Mekanik - Fracture
-Julian Winter - Super Soft-Soaped
-
-Beta testers: PRÓXIMAMENTE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Volver_menu" type="Button" parent="Principal/creditos_container"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "Volver"
-
-[node name="menu_container" type="VBoxContainer" parent="Principal"]
-visible = false
-custom_minimum_size = Vector2(693, 293)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -346.5
-offset_top = -146.5
-offset_right = 346.5
-offset_bottom = 146.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Titulo" type="Label" parent="Principal/menu_container"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 120
-text = "2005"
-horizontal_alignment = 1
-
-[node name="Label" type="Label" parent="Principal/menu_container"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("2_x7k2w")
-theme_override_font_sizes/font_size = 48
-text = "disconnect"
-horizontal_alignment = 1
-
-[node name="Jugar" type="Button" parent="Principal/menu_container"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "Jugar"
-
-[node name="probar_computadora" type="Button" parent="Principal/menu_container"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "Probar computadora"
-
-[node name="Opciones" type="Button" parent="Principal/menu_container"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "Opciones"
-
-[node name="Creditos" type="Button" parent="Principal/menu_container"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "Créditos"
-
-[node name="Salir" type="Button" parent="Principal/menu_container"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "Salir"
-
-[node name="Nos_vemos" type="Label" parent="Principal/menu_container"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_x7k2w")
-theme_override_font_sizes/font_size = 24
-text = "¡Nos vemos pronto!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Version" type="Label" parent="Principal/menu_container"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 24
-text = "0.2.0"
-horizontal_alignment = 2
-vertical_alignment = 2
 
 [node name="logo_container" type="VBoxContainer" parent="Principal"]
 custom_minimum_size = Vector2(277, 105)
@@ -613,21 +669,19 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio/Sonidos"]
 stream = ExtResource("4_gdnrm")
 
+[connection signal="pressed" from="Principal/Menu/menu_botones/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="Principal/Menu/menu_botones/probar_computadora" to="." method="_on_probar_computadora_pressed"]
+[connection signal="pressed" from="Principal/Menu/menu_botones/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="Principal/Menu/menu_botones/Creditos" to="." method="_on_creditos_pressed"]
+[connection signal="pressed" from="Principal/Menu/menu_botones/Salir" to="." method="_on_salir_pressed"]
+[connection signal="pressed" from="Principal/Menu/opciones_container/volver_container/Volver_menu2" to="." method="_on_volver_menu_pressed"]
+[connection signal="pressed" from="Principal/Menu/opciones_container/volver_container/Aplicar" to="." method="_on_aplicar_configuracion_pressed"]
+[connection signal="item_selected" from="Principal/Menu/opciones_container/resolucion_container/Opcion" to="." method="_on_resolucion_item_selected"]
+[connection signal="item_selected" from="Principal/Menu/opciones_container/ventana_container/Opcion" to="." method="_on_tipo_ventana_selected"]
+[connection signal="toggled" from="Principal/Menu/opciones_container/Vsync" to="." method="_on_vsync_toggled"]
+[connection signal="pressed" from="Principal/Menu/creditos_container/Volver_menu" to="." method="_on_volver_menu_pressed"]
 [connection signal="pressed" from="Principal/pausa_container/Resumir" to="." method="resumir"]
 [connection signal="pressed" from="Principal/pausa_container/Regresar_menu" to="." method="_on_regresar_menu_pressed"]
 [connection signal="mouse_entered" from="Principal/pausa_container/Salir" to="." method="_on_salir_mouse_entered"]
 [connection signal="mouse_exited" from="Principal/pausa_container/Salir" to="." method="_on_salir_mouse_exited"]
 [connection signal="pressed" from="Principal/pausa_container/Salir" to="." method="_on_salir_pressed"]
-[connection signal="pressed" from="Principal/opciones_container/volver_container/Volver_menu2" to="." method="_on_volver_menu_pressed"]
-[connection signal="pressed" from="Principal/opciones_container/volver_container/Aplicar" to="." method="_on_aplicar_configuracion_pressed"]
-[connection signal="item_selected" from="Principal/opciones_container/resolucion_container/Opcion" to="." method="_on_resolucion_item_selected"]
-[connection signal="item_selected" from="Principal/opciones_container/ventana_container/Opcion" to="." method="_on_tipo_ventana_selected"]
-[connection signal="toggled" from="Principal/opciones_container/Vsync" to="." method="_on_vsync_toggled"]
-[connection signal="pressed" from="Principal/creditos_container/Volver_menu" to="." method="_on_volver_menu_pressed"]
-[connection signal="pressed" from="Principal/menu_container/Jugar" to="." method="_on_jugar_pressed"]
-[connection signal="pressed" from="Principal/menu_container/probar_computadora" to="." method="_on_probar_computadora_pressed"]
-[connection signal="pressed" from="Principal/menu_container/Opciones" to="." method="_on_opciones_pressed"]
-[connection signal="pressed" from="Principal/menu_container/Creditos" to="." method="_on_creditos_pressed"]
-[connection signal="mouse_entered" from="Principal/menu_container/Salir" to="." method="_on_salir_mouse_entered"]
-[connection signal="mouse_exited" from="Principal/menu_container/Salir" to="." method="_on_salir_mouse_exited"]
-[connection signal="pressed" from="Principal/menu_container/Salir" to="." method="_on_salir_pressed"]

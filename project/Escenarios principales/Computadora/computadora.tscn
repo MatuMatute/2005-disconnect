@@ -91,7 +91,7 @@ theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0, 0, 1, 1)
 theme_override_fonts/font = ExtResource("3_ivula")
 theme_override_font_sizes/font_size = 32
-text = "Water Rings"
+text = "Water Hoops"
 icon = ExtResource("4_301mx")
 flat = true
 autowrap_mode = 2
@@ -118,3 +118,4 @@ vertical_icon_alignment = 0
 
 [connection signal="pressed" from="Inicio" to="." method="_on_inicio_pressed"]
 [connection signal="pressed" from="Margen_pantalla/Orden_iconos/LGF" to="." method="_on_lgf_pressed"]
+[connection signal="pressed" from="Margen_pantalla/Orden_iconos/WRT" to="." method="_on_wrt_pressed"]

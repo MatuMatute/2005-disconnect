@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=3 uid="uid://canv3ldsmi35o"]
+
+[ext_resource type="Script" path="res://Escenarios principales/Computadora/WH/wh_ventana.gd" id="1_vwqmt"]
+[ext_resource type="FontFile" uid="uid://ck15s64movp2k" path="res://Assets/Fonts/FrutigerLTStd-Light.otf" id="2_ttsqo"]
+[ext_resource type="PackedScene" uid="uid://bd617wware8cd" path="res://Escenarios principales/Computadora/WH/waterhoops.tscn" id="4_2510n"]
+[ext_resource type="AudioStream" uid="uid://cle7ddg6ppyvh" path="res://Assets/Audio/Música/musi jueguito.ogg" id="4_gi6c1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55xus"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 8
+border_width_top = 48
+border_width_right = 8
+border_width_bottom = 8
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="WH_ventana" type="MarginContainer"]
+custom_minimum_size = Vector2(1040, 824)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -20.0
+offset_right = 24.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_vwqmt")
+
+[node name="Top" type="Panel" parent="."]
+clip_contents = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_55xus")
+
+[node name="Titulo" type="Label" parent="Top"]
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+offset_right = 160.0
+offset_bottom = 48.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ttsqo")
+theme_override_font_sizes/font_size = 32
+text = "Water Hoops"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cerrar" type="Button" parent="Top"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+offset_left = 1008.0
+offset_right = 1040.0
+offset_bottom = 31.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "X"
+
+[node name="waterhoops" parent="Top" instance=ExtResource("4_2510n")]
+position = Vector2(8, 48)
+
+[node name="wh_interface" type="MarginContainer" parent="Top"]
+custom_minimum_size = Vector2(1024, 768)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -768.0
+offset_right = 512.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Puntuacion" type="Label" parent="Top/wh_interface"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_ttsqo")
+theme_override_font_sizes/font_size = 32
+text = "puntuación"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Transicion" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Jingle" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_gi6c1")
+parameters/looping = true
+
+[connection signal="pressed" from="Top/Cerrar" to="." method="_on_cerrar_pressed"]

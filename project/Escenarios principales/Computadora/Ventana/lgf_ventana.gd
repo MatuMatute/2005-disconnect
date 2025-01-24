@@ -70,4 +70,5 @@ func resumido() -> void:
 
 func _game_over() -> void:
 	tiempo.paused = true
+	$Audio/Jingle.stop()
 	mostrar_nivel.text = "game over"

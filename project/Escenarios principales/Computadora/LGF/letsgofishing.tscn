@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwc84fi7187th"]
+[gd_scene load_steps=8 format=3 uid="uid://bwc84fi7187th"]
 
 [ext_resource type="Script" path="res://Escenarios principales/Computadora/LGF/letsgofishing.gd" id="1_il06m"]
 [ext_resource type="Texture2D" uid="uid://tx3uqjanq4cs" path="res://Escenarios principales/Computadora/LGF/VentanaFISHIT.png" id="2_1u7dh"]
 [ext_resource type="PackedScene" uid="uid://wf2r7p6tyov7" path="res://Assets/Circulo_lago/circulo_lago.tscn" id="2_kytvw"]
 [ext_resource type="PackedScene" uid="uid://b4nvod7n5e0hj" path="res://Assets/Caña/caña.tscn" id="3_25tws"]
+[ext_resource type="AudioStream" uid="uid://bd6lcq6b5ciyi" path="res://Assets/Audio/Sonido/pesca-1.wav" id="5_sv8c4"]
+[ext_resource type="AudioStream" uid="uid://cd34u5lvxu121" path="res://Assets/Audio/Sonido/pesca-2.wav" id="6_e4nir"]
+[ext_resource type="AudioStream" uid="uid://birc0vhellp7a" path="res://Assets/Audio/Sonido/pesca-3.wav" id="7_xnupf"]
 
 [node name="letsgofishing" type="Node2D"]
 script = ExtResource("1_il06m")
@@ -20,5 +23,16 @@ position = Vector2(759, 310)
 
 [node name="Tiempo" type="Timer" parent="."]
 wait_time = 60.0
+
+[node name="Sonidos" type="Node" parent="."]
+
+[node name="Pop1" type="AudioStreamPlayer" parent="Sonidos"]
+stream = ExtResource("5_sv8c4")
+
+[node name="Pop2" type="AudioStreamPlayer" parent="Sonidos"]
+stream = ExtResource("6_e4nir")
+
+[node name="Pop3" type="AudioStreamPlayer" parent="Sonidos"]
+stream = ExtResource("7_xnupf")
 
 [connection signal="timeout" from="Tiempo" to="." method="_on_tiempo_timeout"]

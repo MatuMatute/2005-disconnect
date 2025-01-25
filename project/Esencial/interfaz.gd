@@ -1,6 +1,8 @@
 extends Control
 
 #Declaro las variables de los nodos de la interfaz
+@onready var musica_menu = $Audio/Musica/Main_menu
+@onready var ambiente = $Audio/Musica/Ambiente
 @onready var click = $Audio/Sonidos/Click
 @onready var animacion = $Principal/Animaciones
 @onready var fade = $Principal/Fade
@@ -46,14 +48,13 @@ var valores_index = {
 }
 
 # Variables adicionales importantes más adelante
-var habitacion: Resource
-var camara: Resource
+var habitacion = ResourceLoader.load("res://Escenarios principales/Habitación/habitacion.tscn")
 
 # Esta función se llama la primera vez que se llama al nodo.
 func _ready() -> void:
+	musica_menu.play()
 	Global.pausa = true
-	habitacion = ResourceLoader.load("res://Escenarios principales/Habitación/habitacion.tscn")
-	$"/root".add_child.call_deferred(habitacion.instantiate())
+	#$"/root".add_child.call_deferred(habitacion.instantiate())
 	animacion.play("odd-games")
 
 func _process(_delta: float) -> void:
@@ -64,18 +65,29 @@ func _process(_delta: float) -> void:
 
 # Al presionar el botón "Jugar" esta función se activa
 func _on_jugar_pressed() -> void:
+	habitacion = habitacion.instantiate()
 	click.play()
+	musica_menu.stop()
 	menu_container.hide()
 	fade.hide()
 	Global.pausa = false
+	ambiente.play()
+	$"/root".add_child(habitacion)
 	$"/root/Habitacion/Animacion".animation_finished.connect(_on_animation_finished)
 
-func _on_animation_finished() -> void:
-	pass
-	#computadora.show()
+func _on_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "zoom_camara":
+		ambiente.stream_paused = true
+		$Principal/Computadora.show()
+
+func _on_computadora_apagada() -> void:
+	ambiente.stream_paused = false
+	$"/root/Habitacion".show()
+	$"/root/Habitacion/Jugador".ocupada = false
 
 func _on_probar_computadora_pressed() -> void:
 	click.play()
+	musica_menu.stop()
 	menu_container.hide()
 	fade.hide()
 	Global.pausa = false
@@ -167,8 +179,10 @@ func resumir() -> void:
 
 # Este botón hace un soft-reboot del juego
 func _on_regresar_menu_pressed() -> void:
+	ambiente.stop()
+	musica_menu.play()
 	cerrar_escenarios()
-	$"/root".add_child.call_deferred(habitacion.instantiate(), true)
+	$"/root".add_child(habitacion, true)
 	fade.self_modulate = Color(0.0, 0.0, 0.0, 0.0)
 	fade.hide()
 	pausa_container.hide()

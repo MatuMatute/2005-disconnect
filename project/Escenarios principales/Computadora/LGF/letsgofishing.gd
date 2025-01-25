@@ -1,5 +1,8 @@
 extends Node2D
 
+@onready var pop1 = $Sonidos/Pop1
+@onready var pop2 = $Sonidos/Pop2
+@onready var pop3 = $Sonidos/Pop3
 @onready var tiempo = $Tiempo
 @onready var circulo_grande = $Circulo_lago/Sprite_circulogrande
 @onready var circulo_chico = $Circulo_lago/Sprite_circulochico
@@ -27,7 +30,7 @@ func _ready() -> void:
 	Global.pausado.connect(pausado)
 	Global.resumido.connect(resumido)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	match Global.pausa:
 		false:
 			match deberia_rodar:
@@ -73,6 +76,13 @@ func rodar() -> void:
 	circulo_chico.rotation_degrees -= vel_rueda_chica
 
 func _pez_pescado(puntos, pez) -> void:
+	randomize()
+	var sonido = randi_range(0, 2)
+	match sonido:
+		0: pop1.play()
+		1: pop2.play()
+		2: pop3.play()
+	
 	actualizar_puntuacion(puntos, pez)
 
 func pausado() -> void:

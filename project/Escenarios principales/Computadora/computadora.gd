@@ -12,6 +12,8 @@ extends Control
 var programa_abierto: bool = false
 var programa
 
+signal apagada
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -53,6 +55,13 @@ func _on_inicio_pressed() -> void:
 		false:
 			click.play()
 			menu_inicio.show()
+
+func _on_apagar_pressed() -> void:
+	match programa_abierto:
+		false:
+			menu_inicio.hide()
+			hide()
+			apagada.emit()
 
 func programa_cerrado() -> void:
 	click.play()

@@ -125,5 +125,6 @@ vertical_icon_alignment = 0
 stream = ExtResource("8_k88k0")
 
 [connection signal="pressed" from="Inicio" to="." method="_on_inicio_pressed"]
+[connection signal="pressed" from="Inicio/Menu_inicio/Apagar" to="." method="_on_apagar_pressed"]
 [connection signal="pressed" from="Margen_pantalla/Orden_iconos/LGF" to="." method="_on_lgf_pressed"]
 [connection signal="pressed" from="Margen_pantalla/Orden_iconos/WRT" to="." method="_on_wrt_pressed"]

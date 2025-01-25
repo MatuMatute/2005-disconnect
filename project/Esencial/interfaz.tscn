@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dgv7tstileblb"]
+[gd_scene load_steps=21 format=3 uid="uid://dgv7tstileblb"]
 
 [ext_resource type="Script" path="res://Esencial/interfaz.gd" id="1_06ybr"]
 [ext_resource type="PackedScene" uid="uid://d2me15mdwx6n7" path="res://Escenarios principales/Computadora/computadora.tscn" id="2_oqdvo"]
@@ -10,7 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://datm77ro0vjy6" path="res://Esencial/Menú principal/menu_boton_opciones.png" id="7_cvj7y"]
 [ext_resource type="Texture2D" uid="uid://cl728q5wxcwjk" path="res://Esencial/Menú principal/menu_boton_creditos.png" id="9_1f27r"]
 [ext_resource type="Texture2D" uid="uid://be55qr4fmnnmc" path="res://Esencial/Menú principal/menu_boton_salir.png" id="10_iw63g"]
+[ext_resource type="AudioStream" uid="uid://dxxccwens4ipy" path="res://Assets/Audio/Música/main_menu.ogg" id="11_1usmy"]
 [ext_resource type="AudioStream" uid="uid://ha0oxx36os4r" path="res://Assets/Audio/Sonido/ui_click.wav" id="11_74xdd"]
+[ext_resource type="AudioStream" uid="uid://c6nwd0aglmrx2" path="res://Assets/Audio/Música/monoambiente.ogg" id="12_i6wxi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrao6"]
 
 [sub_resource type="Animation" id="Animation_vlqhu"]
 length = 0.001
@@ -312,6 +316,7 @@ grow_vertical = 2
 script = ExtResource("1_06ybr")
 
 [node name="Principal" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="fishing_interface" type="MarginContainer" parent="Principal"]
 visible = false
@@ -348,6 +353,19 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("5_xtodr")
 
+[node name="Version" type="Label" parent="Principal/Menu"]
+layout_mode = 2
+offset_left = 1556.0
+offset_top = 947.0
+offset_right = 1743.0
+offset_bottom = 979.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "0.3.0-burbuja"
+horizontal_alignment = 2
+vertical_alignment = 2
+
 [node name="menu_botones" type="VBoxContainer" parent="Principal/Menu"]
 visible = false
 custom_minimum_size = Vector2(693, 293)
@@ -381,6 +399,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("6_ycu6n")
 
 [node name="probar_computadora" type="Button" parent="Principal/Menu/menu_botones"]
+visible = false
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -409,20 +428,13 @@ texture_normal = ExtResource("10_iw63g")
 [node name="Nos_vemos" type="Label" parent="Principal/Menu/menu_botones"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("2_x7k2w")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "¡Nos vemos pronto!"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Version" type="Label" parent="Principal/Menu/menu_botones"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "0.2.2"
-horizontal_alignment = 2
-vertical_alignment = 2
 
 [node name="opciones_container" type="VBoxContainer" parent="Principal/Menu"]
 visible = false
@@ -515,9 +527,14 @@ popup/item_2/id = 2
 
 [node name="Vsync" type="CheckButton" parent="Principal/Menu/opciones_container"]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nrao6")
 button_pressed = true
 text = "Sincronización vertical"
 expand_icon = true
@@ -543,15 +560,17 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 32
 text = "odd-games
-Camila Martínez
-Matías Nahuel González Sandoval
-Florencia Belate Dietrich
+Camila Martínez - Música
+Matías Nahuel González Sandoval - Programación
+Florencia Belate Dietrich - Dibujos
 Música
 Human Feeling - Patroux
 The Land Of Misty Dreams by Ahmadreza Safarian
 Novo Dia - Jangwa
 Beat Mekanik - Fracture
 Julian Winter - Super Soft-Soaped
+Floating Cat - Michael Grubb
+Freesound - night ringtone/alarm sound by skylar.mianlind
 
 Beta testers: PRÓXIMAMENTE"
 horizontal_alignment = 1
@@ -595,6 +614,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_x7k2w")
 theme_override_font_sizes/font_size = 72
 text = "pausa"
+horizontal_alignment = 1
 uppercase = true
 
 [node name="Resumir" type="Button" parent="Principal/pausa_container"]
@@ -606,6 +626,7 @@ theme_override_font_sizes/font_size = 32
 text = "Resumir"
 
 [node name="Regresar_menu" type="Button" parent="Principal/pausa_container"]
+visible = false
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6idcw")
@@ -663,17 +684,28 @@ libraries = {
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="Música" type="Node" parent="Audio"]
+[node name="Musica" type="Node" parent="Audio"]
+
+[node name="Main_menu" type="AudioStreamPlayer" parent="Audio/Musica"]
+stream = ExtResource("11_1usmy")
+parameters/looping = true
+
+[node name="Ambiente" type="AudioStreamPlayer" parent="Audio/Musica"]
+stream = ExtResource("12_i6wxi")
+parameters/looping = true
 
 [node name="Sonidos" type="Node" parent="Audio"]
 
 [node name="Click" type="AudioStreamPlayer" parent="Audio/Sonidos"]
 stream = ExtResource("11_74xdd")
 
+[connection signal="apagada" from="Principal/Computadora" to="." method="_on_computadora_apagada"]
 [connection signal="pressed" from="Principal/Menu/menu_botones/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="Principal/Menu/menu_botones/probar_computadora" to="." method="_on_probar_computadora_pressed"]
 [connection signal="pressed" from="Principal/Menu/menu_botones/Opciones" to="." method="_on_opciones_pressed"]
 [connection signal="pressed" from="Principal/Menu/menu_botones/Creditos" to="." method="_on_creditos_pressed"]
+[connection signal="mouse_entered" from="Principal/Menu/menu_botones/Salir" to="." method="_on_salir_mouse_entered"]
+[connection signal="mouse_exited" from="Principal/Menu/menu_botones/Salir" to="." method="_on_salir_mouse_exited"]
 [connection signal="pressed" from="Principal/Menu/menu_botones/Salir" to="." method="_on_salir_pressed"]
 [connection signal="pressed" from="Principal/Menu/opciones_container/volver_container/Volver_menu2" to="." method="_on_volver_menu_pressed"]
 [connection signal="pressed" from="Principal/Menu/opciones_container/volver_container/Aplicar" to="." method="_on_aplicar_configuracion_pressed"]

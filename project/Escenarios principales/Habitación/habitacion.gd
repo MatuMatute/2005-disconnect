@@ -1,7 +1,10 @@
 extends Node2D
 
+@onready var animacion = $Animacion
 @onready var jugador_visible = $Jugador/Salida_transicion
 @onready var camara = $Camara
+@onready var jugador = $Jugador
+@onready var mouse = $Jugador/Mouse
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,13 +23,21 @@ func _jugador_fuera_pantalla() -> void:
 func _on_area_pc_body_entered(body: Node2D) -> void:
 	match Global.pausa:
 		false:
-			if body is Protagonista: 
-				$Jugador/Mouse.show()
-				if Input.is_action_pressed("ui_select"):
-					$Animacion.play("zoom_camara")
+			if body is Protagonista:
+				mouse.show()
+				mouse.play("default")
+				body.interaccion = "Computadora"
 
 func _on_area_pc_body_exited(body: Node2D) -> void:
 	match Global.pausa:
 		false:
 			if body is Protagonista: 
-				$Jugador/Mouse.hide()
+				mouse.hide()
+				body.interaccion = ""
+
+func _on_animacion_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "zoom_camara":
+		animacion.play("RESET")
+		await animacion.animation_finished
+		camara.position.x = 0
+		hide()

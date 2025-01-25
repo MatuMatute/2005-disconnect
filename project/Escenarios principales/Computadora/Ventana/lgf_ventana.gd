@@ -29,7 +29,7 @@ func _ready() -> void:
 	introduccion_nivel()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	match transicion:
 		false:
 			etiqueta_tiempo.text = str(snappedf(tiempo.get_time_left(), 0.1))

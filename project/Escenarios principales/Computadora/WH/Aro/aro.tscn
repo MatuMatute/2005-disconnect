@@ -5,11 +5,13 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ok16f"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lixeq"]
-size = Vector2(6, 14)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7l5j3"]
+radius = 4.0
+height = 20.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc8lk"]
-size = Vector2(6, 14)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4msbr"]
+radius = 4.0
+height = 20.0
 
 [node name="Aro" type="RigidBody2D"]
 collision_layer = 4
@@ -23,9 +25,9 @@ script = ExtResource("1_oqhf1")
 texture = ExtResource("2_0jx7c")
 
 [node name="Colision1" type="CollisionShape2D" parent="."]
-position = Vector2(-25, 0)
-shape = SubResource("RectangleShape2D_lixeq")
+position = Vector2(-24, 0)
+shape = SubResource("CapsuleShape2D_7l5j3")
 
 [node name="Colision2" type="CollisionShape2D" parent="."]
 position = Vector2(24, 1)
-shape = SubResource("RectangleShape2D_pc8lk")
+shape = SubResource("CapsuleShape2D_4msbr")

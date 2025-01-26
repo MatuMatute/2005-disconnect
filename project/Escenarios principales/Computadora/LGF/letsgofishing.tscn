@@ -28,9 +28,11 @@ wait_time = 60.0
 
 [node name="Pop1" type="AudioStreamPlayer" parent="Sonidos"]
 stream = ExtResource("5_sv8c4")
+volume_db = 3.0
 
 [node name="Pop2" type="AudioStreamPlayer" parent="Sonidos"]
 stream = ExtResource("6_e4nir")
+volume_db = 2.0
 
 [node name="Pop3" type="AudioStreamPlayer" parent="Sonidos"]
 stream = ExtResource("7_xnupf")

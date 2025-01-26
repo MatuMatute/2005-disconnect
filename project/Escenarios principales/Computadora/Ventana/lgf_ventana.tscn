@@ -1,14 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://bsxpanlm44hli"]
+[gd_scene load_steps=15 format=3 uid="uid://bsxpanlm44hli"]
 
 [ext_resource type="FontFile" uid="uid://sg2wkwe5in7k" path="res://Assets/Fonts/FrutigerLTStd-Black.otf" id="1_6q68q"]
 [ext_resource type="Script" path="res://Escenarios principales/Computadora/Ventana/lgf_ventana.gd" id="1_c0dx2"]
 [ext_resource type="FontFile" uid="uid://ck15s64movp2k" path="res://Assets/Fonts/FrutigerLTStd-Light.otf" id="1_gli52"]
 [ext_resource type="PackedScene" uid="uid://bwc84fi7187th" path="res://Escenarios principales/Computadora/LGF/letsgofishing.tscn" id="3_vjen8"]
 [ext_resource type="FontFile" uid="uid://b2gn8i5wh2cog" path="res://Assets/Fonts/FrutigerLTStd-BlackItalic.otf" id="4_70ast"]
+[ext_resource type="Texture2D" uid="uid://c87bqd3hhvuom" path="res://Assets/Controles/WASD.png" id="5_k7okk"]
 [ext_resource type="FontFile" uid="uid://bc1c5bsacf0y8" path="res://Assets/Fonts/FrutigerLTStd-Bold.otf" id="5_vgeg1"]
+[ext_resource type="Texture2D" uid="uid://hua06cw78j7g" path="res://Assets/Controles/Spacebar.png" id="6_fsyw1"]
 [ext_resource type="AudioStream" uid="uid://dbem1m1yt1rxk" path="res://Assets/Audio/Música/Pipipupu.ogg" id="6_vnc11"]
 [ext_resource type="Texture2D" uid="uid://dfhk5askpdplw" path="res://Assets/Pez/Pescado Inventario.png" id="6_yjq20"]
-[ext_resource type="AudioStream" uid="uid://dwlrbcmf02wtp" path="res://Assets/Audio/Música/Beat-Mekanik-Fracture.ogg" id="7_05fuh"]
+[ext_resource type="AudioStream" uid="uid://o2frm0ppysp1" path="res://Assets/Audio/Sonido/win.wav" id="9_2r8af"]
+[ext_resource type="AudioStream" uid="uid://bbockc85xp37a" path="res://Assets/Audio/Sonido/game over 1.wav" id="10_o31hf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55xus"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -74,6 +77,7 @@ offset_right = 1040.0
 offset_bottom = 40.0
 size_flags_horizontal = 8
 size_flags_vertical = 0
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("1_6q68q")
 theme_override_font_sizes/font_size = 24
@@ -127,6 +131,23 @@ theme_override_font_sizes/font_size = 48
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="control_orden" type="VBoxContainer" parent="Top/fishing_interface"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 240
+
+[node name="WASD" type="TextureRect" parent="Top/fishing_interface/control_orden"]
+layout_mode = 2
+texture = ExtResource("5_k7okk")
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Top/fishing_interface/control_orden"]
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("6_fsyw1")
+stretch_mode = 2
+
 [node name="inv_container" type="HBoxContainer" parent="Top/fishing_interface"]
 custom_minimum_size = Vector2(768, 96)
 layout_mode = 2
@@ -168,13 +189,21 @@ wait_time = 3.0
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="Jingle" type="AudioStreamPlayer" parent="Audio"]
+[node name="Musica" type="Node" parent="Audio"]
+
+[node name="Jingle" type="AudioStreamPlayer" parent="Audio/Musica"]
 stream = ExtResource("6_vnc11")
 parameters/looping = true
 
-[node name="Serio" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("7_05fuh")
+[node name="Sonidos" type="Node" parent="Audio"]
+
+[node name="Win" type="AudioStreamPlayer" parent="Audio/Sonidos"]
+stream = ExtResource("9_2r8af")
+
+[node name="Lose" type="AudioStreamPlayer" parent="Audio/Sonidos"]
+stream = ExtResource("10_o31hf")
 
 [connection signal="comenzar_nivel" from="." to="Top/letsgofishing" method="_on_comenzar_nivel"]
 [connection signal="pressed" from="Top/Cerrar" to="." method="_on_cerrar_pressed"]
 [connection signal="cambiar_puntuacion" from="Top/letsgofishing" to="." method="_on_letsgofishing_cambiar_puntuacion"]
+[connection signal="ganaste" from="Top/letsgofishing" to="." method="_on_letsgofishing_ganaste"]

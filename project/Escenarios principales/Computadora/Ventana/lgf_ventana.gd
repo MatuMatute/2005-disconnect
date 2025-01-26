@@ -4,6 +4,7 @@ extends MarginContainer
 #@onready var etiqueta_nivel = $fishing_interface/fishing_container/Nivel
 @onready var etiqueta_tiempo = $Top/fishing_interface/tiempo_container/Tiempo
 @onready var etiqueta_puntuacion = $Top/fishing_interface/puntuacion_container/Puntuacion
+@onready var control_orden = $Top/fishing_interface/control_orden
 @onready var mostrar_nivel = $Top/fishing_interface/Mostrar_nivel
 @onready var juego = $Top/letsgofishing
 @onready var tiempo = $Top/letsgofishing/Tiempo
@@ -20,11 +21,12 @@ signal comenzar_nivel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	control_orden.hide()
 	tiempo.paused = true
 	tiempo.timeout.connect(_game_over)
 	Global.pausado.connect(pausado)
 	Global.resumido.connect(resumido)
-	$Audio/Jingle.play()
+	$Audio/Musica/Jingle.play()
 	$Transicion.stop()
 	introduccion_nivel()
 
@@ -39,12 +41,18 @@ func _process(_delta: float) -> void:
 			etiqueta_puntuacion.text = ""
 
 func introduccion_nivel() -> void:
+	mostrar_controles()
 	mostrar_nivel.text = "game start"
 	$Transicion.start()
 	await $Transicion.timeout
 	mostrar_nivel.text = ""
 	transicion = false
 	comenzar_nivel.emit()
+
+func mostrar_controles() -> void:
+	control_orden.show()
+	await get_tree().create_timer(12).timeout
+	control_orden.hide()
 
 func _on_cerrar_pressed() -> void:
 	queue_free()
@@ -70,5 +78,12 @@ func resumido() -> void:
 
 func _game_over() -> void:
 	tiempo.paused = true
-	$Audio/Jingle.stop()
+	$Audio/Musica/Jingle.stop()
+	$Audio/Sonidos/Lose.play()
 	mostrar_nivel.text = "game over"
+
+func _on_letsgofishing_ganaste() -> void:
+	tiempo.paused = true
+	$Audio/Musica/Jingle.stop()
+	$Audio/Sonidos/Win.play()
+	mostrar_nivel.text = "you win!"

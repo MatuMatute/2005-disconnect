@@ -15,7 +15,7 @@ texture = ExtResource("1_ynsjf")
 
 [node name="Base" parent="." instance=ExtResource("2_er6eo")]
 
-[node name="Area_despawn" parent="Base" index="2"]
+[node name="Area_despawn" parent="Base" index="3"]
 position = Vector2(509, 573)
 collision_layer = 4
 collision_mask = 4

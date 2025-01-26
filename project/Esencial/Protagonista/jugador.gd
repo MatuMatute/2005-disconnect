@@ -15,14 +15,17 @@ var interaccion = ""
 func _ready() -> void:
 	pass # Replace with function body.
 
+# Ya sé que esto se ve como un papelón, pero hay que pasar por varias cosas para activar esto.
 func _input(event: InputEvent) -> void:
-	match ocupada:
-		false:
-			match interaccion: 
-				"Computadora":
-					if event.is_action_pressed("ui_accept"): 
-						ocupada = true
-						get_parent().get_node("Animacion").play("zoom_camara")
+	match Global.pausa:
+		false: 
+			match ocupada:
+				false:
+					match interaccion: 
+						"Computadora":
+							if event.is_action_pressed("ui_select"): 
+								ocupada = true
+								get_parent().get_node("Animacion").play("zoom_camara")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

@@ -15,7 +15,7 @@ func _ready() -> void:
 	estadisticas["masa"] = 0.04
 	estadisticas["velocidad"] = 15
 	
-	var color = randi_range(0, 3) 
+	var color = randi_range(1, 3) 
 	match color:
 		0: estadisticas["color"] = Color(1.0, 1.0, 1.0, 1.0)
 		1: estadisticas["color"] = Color(1.0, 0.0, 0.0, 1.0)

@@ -10,6 +10,7 @@ extends Node2D
 # Declaro nodos importantes de la interfaz
 # signal cambiar_nivel
 signal cambiar_puntuacion
+signal ganaste
 
 # Variables que controlan el gameplay
 var nivel: int = 0
@@ -34,7 +35,8 @@ func _process(_delta: float) -> void:
 	match Global.pausa:
 		false:
 			match deberia_rodar:
-				true: rodar()
+				true: 
+					rodar()
 
 func actualizar_puntuacion(cantidad: int, pez) -> void:
 	puntuacion += cantidad
@@ -75,13 +77,22 @@ func rodar() -> void:
 	circulo_grande.rotation_degrees += vel_rueda_grande
 	circulo_chico.rotation_degrees -= vel_rueda_chica
 
-func _pez_pescado(puntos, pez) -> void:
+func _pez_pescado(puntos, pez, nodo) -> void:
 	randomize()
 	var sonido = randi_range(0, 2)
 	match sonido:
 		0: pop1.play()
 		1: pop2.play()
 		2: pop3.play()
+	
+	peces_grandes.erase(nodo)
+	peces_chicos.erase(nodo)
+	
+	if (peces_chicos.size() + peces_grandes.size()) == 0: 
+		await get_tree().create_timer(1).timeout
+		$Circulo_lago.hide()
+		$"Caña".hide()
+		ganaste.emit()
 	
 	actualizar_puntuacion(puntos, pez)
 

@@ -10,5 +10,4 @@ collision_mask = 4
 texture = ExtResource("1_qdt0u")
 
 [node name="Colision" type="CollisionPolygon2D" parent="."]
-build_mode = 1
 polygon = PackedVector2Array(-22, 62, 0, 68, 22, 61, 0, -68)

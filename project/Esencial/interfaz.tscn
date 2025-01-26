@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dgv7tstileblb"]
+[gd_scene load_steps=23 format=3 uid="uid://dgv7tstileblb"]
 
 [ext_resource type="Script" path="res://Esencial/interfaz.gd" id="1_06ybr"]
 [ext_resource type="PackedScene" uid="uid://d2me15mdwx6n7" path="res://Escenarios principales/Computadora/computadora.tscn" id="2_oqdvo"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://datm77ro0vjy6" path="res://Esencial/Menú principal/menu_boton_opciones.png" id="7_cvj7y"]
 [ext_resource type="Texture2D" uid="uid://cl728q5wxcwjk" path="res://Esencial/Menú principal/menu_boton_creditos.png" id="9_1f27r"]
 [ext_resource type="Texture2D" uid="uid://be55qr4fmnnmc" path="res://Esencial/Menú principal/menu_boton_salir.png" id="10_iw63g"]
+[ext_resource type="FontFile" uid="uid://syiry5v6htj7" path="res://Assets/Fonts/FrutigerLTStd-BoldItalic.otf" id="10_yjufw"]
 [ext_resource type="AudioStream" uid="uid://dxxccwens4ipy" path="res://Assets/Audio/Música/main_menu.ogg" id="11_1usmy"]
+[ext_resource type="FontFile" uid="uid://bx607mwlpyoq3" path="res://Assets/Fonts/FrutigerLTStd-BoldCn.otf" id="11_3valw"]
 [ext_resource type="AudioStream" uid="uid://ha0oxx36os4r" path="res://Assets/Audio/Sonido/ui_click.wav" id="11_74xdd"]
 [ext_resource type="AudioStream" uid="uid://c6nwd0aglmrx2" path="res://Assets/Audio/Música/monoambiente.ogg" id="12_i6wxi"]
 
@@ -362,7 +364,7 @@ offset_bottom = 979.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 32
-text = "0.3.0-burbuja"
+text = "0.3.1-burbuja"
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -396,33 +398,29 @@ theme_override_constants/separation = 30
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_mode = 0
 texture_normal = ExtResource("6_ycu6n")
-
-[node name="probar_computadora" type="Button" parent="Principal/Menu/menu_botones"]
-visible = false
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-text = "Probar computadora"
+texture_pressed = ExtResource("6_ycu6n")
 
 [node name="Opciones" type="TextureButton" parent="Principal/Menu/menu_botones"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_mode = 0
 texture_normal = ExtResource("7_cvj7y")
 
 [node name="Creditos" type="TextureButton" parent="Principal/Menu/menu_botones"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_mode = 0
 texture_normal = ExtResource("9_1f27r")
 
 [node name="Salir" type="TextureButton" parent="Principal/Menu/menu_botones"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_mode = 0
 texture_normal = ExtResource("10_iw63g")
 
 [node name="Nos_vemos" type="Label" parent="Principal/Menu/menu_botones"]
@@ -430,7 +428,7 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("2_x7k2w")
+theme_override_fonts/font = ExtResource("10_yjufw")
 theme_override_font_sizes/font_size = 32
 text = "¡Nos vemos pronto!"
 horizontal_alignment = 1
@@ -556,13 +554,16 @@ theme_override_constants/separation = 10
 
 [node name="Creditos" type="Label" parent="Principal/Menu/creditos_container"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("11_3valw")
 theme_override_font_sizes/font_size = 32
 text = "odd-games
-Camila Martínez - Música
+Camila Martínez - Composición musical
 Matías Nahuel González Sandoval - Programación
-Florencia Belate Dietrich - Dibujos
+Florencia Belate Dietrich - Arte visual
+
 Música
 Human Feeling - Patroux
 The Land Of Misty Dreams by Ahmadreza Safarian
@@ -701,7 +702,6 @@ stream = ExtResource("11_74xdd")
 
 [connection signal="apagada" from="Principal/Computadora" to="." method="_on_computadora_apagada"]
 [connection signal="pressed" from="Principal/Menu/menu_botones/Jugar" to="." method="_on_jugar_pressed"]
-[connection signal="pressed" from="Principal/Menu/menu_botones/probar_computadora" to="." method="_on_probar_computadora_pressed"]
 [connection signal="pressed" from="Principal/Menu/menu_botones/Opciones" to="." method="_on_opciones_pressed"]
 [connection signal="pressed" from="Principal/Menu/menu_botones/Creditos" to="." method="_on_creditos_pressed"]
 [connection signal="mouse_entered" from="Principal/Menu/menu_botones/Salir" to="." method="_on_salir_mouse_entered"]

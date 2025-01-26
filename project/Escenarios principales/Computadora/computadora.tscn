@@ -30,6 +30,7 @@ offset_left = 158.0
 offset_top = 946.0
 offset_right = 343.0
 offset_bottom = 1005.0
+focus_mode = 0
 flat = true
 
 [node name="Menu_inicio" type="TextureRect" parent="Inicio"]
@@ -49,6 +50,7 @@ offset_top = 100.0
 offset_right = 228.0
 offset_bottom = 131.0
 rotation = -0.0261799
+focus_mode = 0
 flat = true
 
 [node name="Margen_pantalla" type="MarginContainer" parent="."]
@@ -63,6 +65,7 @@ layout_mode = 2
 
 [node name="LGF" type="Button" parent="Margen_pantalla/Orden_iconos"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
@@ -83,6 +86,7 @@ vertical_icon_alignment = 0
 
 [node name="WRT" type="Button" parent="Margen_pantalla/Orden_iconos"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
@@ -101,6 +105,7 @@ vertical_icon_alignment = 0
 
 [node name="MSN" type="Button" parent="Margen_pantalla/Orden_iconos"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)

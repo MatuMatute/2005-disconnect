@@ -17,7 +17,7 @@ extends Area2D
 var abierta: bool = false
 
 
-signal pescado(puntos_dados)
+signal pescado(puntos_dados, pez, nodo)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,6 +54,6 @@ func _on_body_entered(body: Node2D) -> void:
 				$Sprite.play("Cerrar")
 				body.hide()
 				await get_tree().create_timer(0.5).timeout
-				pescado.emit(puntos, pez)
+				pescado.emit(puntos, pez, self)
 				body.show()
 				queue_free()

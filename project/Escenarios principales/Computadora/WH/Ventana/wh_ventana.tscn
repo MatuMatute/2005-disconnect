@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://canv3ldsmi35o"]
+[gd_scene load_steps=10 format=3 uid="uid://canv3ldsmi35o"]
 
-[ext_resource type="Script" path="res://Escenarios principales/Computadora/WH/wh_ventana.gd" id="1_vwqmt"]
+[ext_resource type="Script" path="res://Escenarios principales/Computadora/WH/Ventana/wh_ventana.gd" id="1_vwqmt"]
 [ext_resource type="FontFile" uid="uid://ck15s64movp2k" path="res://Assets/Fonts/FrutigerLTStd-Light.otf" id="2_ttsqo"]
 [ext_resource type="FontFile" uid="uid://sg2wkwe5in7k" path="res://Assets/Fonts/FrutigerLTStd-Black.otf" id="3_glrda"]
 [ext_resource type="PackedScene" uid="uid://bd617wware8cd" path="res://Escenarios principales/Computadora/WH/waterhoops.tscn" id="4_2510n"]
 [ext_resource type="AudioStream" uid="uid://ca1ix4yhv70wd" path="res://Assets/Audio/Música/Marinerito.ogg" id="5_ffne6"]
+[ext_resource type="FontFile" uid="uid://b2gn8i5wh2cog" path="res://Assets/Fonts/FrutigerLTStd-BlackItalic.otf" id="5_vi5tb"]
+[ext_resource type="AudioStream" uid="uid://o2frm0ppysp1" path="res://Assets/Audio/Sonido/win.wav" id="6_ey5yf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55xus"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -99,14 +101,16 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="Puntuacion" type="Label" parent="Top/wh_interface"]
+[node name="mensaje_grande" type="Label" parent="Top/wh_interface"]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_constants/outline_size = 8
-theme_override_fonts/font = ExtResource("2_ttsqo")
-theme_override_font_sizes/font_size = 32
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("5_vi5tb")
+theme_override_font_sizes/font_size = 72
+text = "YOU WIN!!!"
 horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 
 [node name="Transicion" type="Timer" parent="."]
@@ -114,8 +118,17 @@ wait_time = 3.0
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="Jingle" type="AudioStreamPlayer" parent="Audio"]
+[node name="Musica" type="Node" parent="Audio"]
+
+[node name="Jingle" type="AudioStreamPlayer" parent="Audio/Musica"]
 stream = ExtResource("5_ffne6")
 parameters/looping = true
 
+[node name="Sonido" type="Node" parent="Audio"]
+
+[node name="Win" type="AudioStreamPlayer" parent="Audio/Sonido"]
+stream = ExtResource("6_ey5yf")
+volume_db = 5.0
+
+[connection signal="ganaste" from="Top/waterhoops" to="." method="_on_waterhoops_ganaste"]
 [connection signal="pressed" from="Top/Cerrar" to="." method="_on_cerrar_pressed"]

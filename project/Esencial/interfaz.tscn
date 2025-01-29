@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgv7tstileblb"]
+[gd_scene load_steps=27 format=3 uid="uid://dgv7tstileblb"]
 
 [ext_resource type="Script" path="res://Esencial/interfaz.gd" id="1_06ybr"]
 [ext_resource type="PackedScene" uid="uid://d2me15mdwx6n7" path="res://Escenarios principales/Computadora/computadora.tscn" id="2_oqdvo"]
@@ -8,13 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://m66jck0pvjwb" path="res://Escenarios principales/Computadora/monitor fp.png" id="5_xtodr"]
 [ext_resource type="Texture2D" uid="uid://yvli2pkk2okx" path="res://Esencial/Menú principal/menu_boton_jugar.png" id="6_ycu6n"]
 [ext_resource type="Texture2D" uid="uid://datm77ro0vjy6" path="res://Esencial/Menú principal/menu_boton_opciones.png" id="7_cvj7y"]
+[ext_resource type="Texture2D" uid="uid://b8u04u05fvvfl" path="res://Esencial/Menú principal/h_menu_boton_jugar.png" id="7_rjcky"]
 [ext_resource type="Texture2D" uid="uid://cl728q5wxcwjk" path="res://Esencial/Menú principal/menu_boton_creditos.png" id="9_1f27r"]
+[ext_resource type="Texture2D" uid="uid://xs0nm5qc7pxi" path="res://Esencial/Menú principal/h_menu_boton_opciones.png" id="9_lrbay"]
 [ext_resource type="Texture2D" uid="uid://be55qr4fmnnmc" path="res://Esencial/Menú principal/menu_boton_salir.png" id="10_iw63g"]
 [ext_resource type="FontFile" uid="uid://syiry5v6htj7" path="res://Assets/Fonts/FrutigerLTStd-BoldItalic.otf" id="10_yjufw"]
 [ext_resource type="AudioStream" uid="uid://dxxccwens4ipy" path="res://Assets/Audio/Música/main_menu.ogg" id="11_1usmy"]
 [ext_resource type="FontFile" uid="uid://bx607mwlpyoq3" path="res://Assets/Fonts/FrutigerLTStd-BoldCn.otf" id="11_3valw"]
 [ext_resource type="AudioStream" uid="uid://ha0oxx36os4r" path="res://Assets/Audio/Sonido/ui_click.wav" id="11_74xdd"]
+[ext_resource type="Texture2D" uid="uid://bdv10vgxuqn5v" path="res://Esencial/Menú principal/h_menu_boton_creditos.png" id="11_htux3"]
 [ext_resource type="AudioStream" uid="uid://c6nwd0aglmrx2" path="res://Assets/Audio/Música/monoambiente.ogg" id="12_i6wxi"]
+[ext_resource type="Texture2D" uid="uid://bikcq8a3vv3xx" path="res://Esencial/Menú principal/h_menu_boton_salir.png" id="13_grfte"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrao6"]
 
@@ -140,6 +144,30 @@ tracks/9/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Menu/Logo:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(721, 110)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Menu/Logo:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
 
 [sub_resource type="Animation" id="Animation_m2mml"]
 resource_name = "fade_in"
@@ -173,8 +201,9 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_tkyx1"]
 resource_name = "odd-games"
-length = 8.0
+length = 10.0
 step = 0.1
+capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -254,7 +283,7 @@ tracks/6/path = NodePath("../Menu/menu_botones:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 8),
+"times": PackedFloat32Array(0, 10),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -295,6 +324,30 @@ tracks/9/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Menu/Logo:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 8, 9.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 2,
+"values": [Vector2(797, 237), Vector2(797, 237), Vector2(721, 110)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Menu/Logo:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 8, 9.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 2,
+"values": [Vector2(2, 2), Vector2(2, 2), Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_43tpg"]
 resource_name = "zoom_camara"
@@ -320,32 +373,6 @@ script = ExtResource("1_06ybr")
 [node name="Principal" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="fishing_interface" type="MarginContainer" parent="Principal"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="fishing_container" type="HBoxContainer" parent="Principal/fishing_interface"]
-custom_minimum_size = Vector2(1000, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="Ronda" type="Label" parent="Principal/fishing_interface/fishing_container"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 0
-horizontal_alignment = 1
-
-[node name="Puntuacion" type="Label" parent="Principal/fishing_interface/fishing_container"]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 0
-horizontal_alignment = 1
-
 [node name="Computadora" parent="Principal" instance=ExtResource("2_oqdvo")]
 visible = false
 
@@ -364,35 +391,33 @@ offset_bottom = 979.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 32
-text = "0.3.1-burbuja"
+text = "0.3.2-burbuja"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="menu_botones" type="VBoxContainer" parent="Principal/Menu"]
-visible = false
-custom_minimum_size = Vector2(693, 293)
+[node name="Logo" type="TextureRect" parent="Principal/Menu"]
 layout_mode = 2
-offset_left = 613.0
+offset_left = 721.0
 offset_top = 110.0
-offset_right = 1306.0
-offset_bottom = 969.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 10
-
-[node name="Logo" type="TextureRect" parent="Principal/Menu/menu_botones"]
-layout_mode = 2
+offset_right = 1198.0
+offset_bottom = 381.0
+scale = Vector2(2, 2)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("5_tr0f5")
 stretch_mode = 2
 
-[node name="Separador" type="HSeparator" parent="Principal/Menu/menu_botones"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-theme_override_constants/separation = 30
+[node name="menu_botones" type="VBoxContainer" parent="Principal/Menu"]
+visible = false
+layout_mode = 0
+offset_left = 775.0
+offset_top = 440.0
+offset_right = 1145.0
+offset_bottom = 912.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 2
 
 [node name="Jugar" type="TextureButton" parent="Principal/Menu/menu_botones"]
 layout_mode = 2
@@ -400,7 +425,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
 texture_normal = ExtResource("6_ycu6n")
-texture_pressed = ExtResource("6_ycu6n")
+texture_pressed = ExtResource("7_rjcky")
+texture_hover = ExtResource("7_rjcky")
+texture_focused = ExtResource("7_rjcky")
 
 [node name="Opciones" type="TextureButton" parent="Principal/Menu/menu_botones"]
 layout_mode = 2
@@ -408,6 +435,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
 texture_normal = ExtResource("7_cvj7y")
+texture_pressed = ExtResource("9_lrbay")
+texture_hover = ExtResource("9_lrbay")
+texture_focused = ExtResource("9_lrbay")
 
 [node name="Creditos" type="TextureButton" parent="Principal/Menu/menu_botones"]
 layout_mode = 2
@@ -415,6 +445,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
 texture_normal = ExtResource("9_1f27r")
+texture_pressed = ExtResource("11_htux3")
+texture_hover = ExtResource("11_htux3")
+texture_focused = ExtResource("11_htux3")
 
 [node name="Salir" type="TextureButton" parent="Principal/Menu/menu_botones"]
 layout_mode = 2
@@ -422,6 +455,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
 texture_normal = ExtResource("10_iw63g")
+texture_pressed = ExtResource("13_grfte")
+texture_hover = ExtResource("13_grfte")
+texture_focused = ExtResource("13_grfte")
 
 [node name="Nos_vemos" type="Label" parent="Principal/Menu/menu_botones"]
 self_modulate = Color(1, 1, 1, 0)
@@ -544,10 +580,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -342.5
-offset_top = -233.5
-offset_right = 342.5
-offset_bottom = 233.5
+offset_left = -391.0
+offset_top = -286.0
+offset_right = 391.0
+offset_bottom = 286.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10

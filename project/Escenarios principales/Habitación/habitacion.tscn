@@ -131,4 +131,7 @@ libraries = {
 
 [connection signal="body_entered" from="Area_PC" to="." method="_on_area_pc_body_entered"]
 [connection signal="body_exited" from="Area_PC" to="." method="_on_area_pc_body_exited"]
+[connection signal="screen_exited" from="Jugador/Salida_transicion" to="." method="_jugador_fuera_pantalla"]
 [connection signal="animation_finished" from="Animacion" to="." method="_on_animacion_animation_finished"]
+
+[editable path="Jugador"]

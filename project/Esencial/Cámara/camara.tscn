@@ -1,7 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqrrxgogf7ef1"]
-
-[ext_resource type="Script" path="res://Esencial/Cámara/camara.gd" id="1_5jn8n"]
+[gd_scene format=3 uid="uid://cqrrxgogf7ef1"]
 
 [node name="Camara" type="Camera2D"]
 anchor_mode = 0
-script = ExtResource("1_5jn8n")

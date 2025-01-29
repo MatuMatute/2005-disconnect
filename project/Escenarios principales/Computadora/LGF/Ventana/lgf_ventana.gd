@@ -37,9 +37,9 @@ func _process(_delta: float) -> void:
 			etiqueta_tiempo.text = str(snappedf(tiempo.get_time_left(), 0.1))
 		true:
 			etiqueta_tiempo.text = ""
-			#etiqueta_nivel.text = ""
 			etiqueta_puntuacion.text = ""
 
+# Esto es lo que ocurre al inicio de cada nivel
 func introduccion_nivel() -> void:
 	mostrar_controles()
 	mostrar_nivel.text = "game start"
@@ -57,10 +57,6 @@ func mostrar_controles() -> void:
 func _on_cerrar_pressed() -> void:
 	queue_free()
 	cerrado.emit()
-
-func _on_letsgofishing_cambiar_nivel() -> void:
-	pass
-	#etiqueta_nivel.text = "nivel\n" + str(nivel)
 
 func _on_letsgofishing_cambiar_puntuacion(puntuacion, pez) -> void:
 	etiqueta_puntuacion.text = str(puntuacion)

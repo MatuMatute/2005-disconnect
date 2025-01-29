@@ -1,11 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://di7wac0kwb6n1"]
+[gd_scene load_steps=2 format=3 uid="uid://di7wac0kwb6n1"]
 
 [ext_resource type="Texture2D" uid="uid://dgin0esqcgyil" path="res://Escenarios principales/Computadora/WH/Water Rings - Estructura (Transparente y Blanco).png" id="1_nfjl4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uynhc"]
-size = Vector2(510, 80.5)
-
-[node name="Base" type="StaticBody2D"]
+[node name="Base" type="StaticBody2D" groups=["Waterhoops"]]
 collision_layer = 4
 collision_mask = 4
 
@@ -15,11 +12,3 @@ texture = ExtResource("1_nfjl4")
 
 [node name="Colision" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(258, 192, 290, 141, 344, 95, 416, 62, 508, 49, 598, 60, 679, 93, 736, 141, 765, 194, 764, 613, 860, 613, 860, 0, 160, 0, 160, 720, 860, 720, 860, 613, 764, 613, 707, 613, 651, 610, 580, 578, 544, 565, 481, 565, 443, 576, 405, 598, 367, 610, 255, 614)
-
-[node name="Area_despawn" type="Area2D" parent="."]
-visible = false
-monitoring = false
-
-[node name="Colision" type="CollisionShape2D" parent="Area_despawn"]
-position = Vector2(509, 578.25)
-shape = SubResource("RectangleShape2D_uynhc")

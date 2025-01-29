@@ -16,7 +16,6 @@ extends Area2D
 # Variable que ajusta sí el pez tiene la boca abierta o no
 var abierta: bool = false
 
-
 signal pescado(puntos_dados, pez, nodo)
 
 # Called when the node enters the scene tree for the first time.
@@ -26,12 +25,7 @@ func _ready() -> void:
 	rotate(randf_range(0.0, PI * 2))
 	$Boca.start(randf_range(min_tiempo, max_tiempo))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	match abierta:
-		false: pass
-		true: pass
-
+# Sí debe abrir o cerrar la boca al terminar el timer.
 func _on_boca_timeout() -> void:
 	match abierta:
 		false:
@@ -45,7 +39,7 @@ func _on_boca_timeout() -> void:
 			abierta = false
 			$Boca.start(randf_range(min_tiempo, max_tiempo))
 
-
+# Cuando el anzuelo toca la boca del pez
 func _on_body_entered(body: Node2D) -> void:
 	if body is Anzuelo:
 		match abierta:

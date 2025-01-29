@@ -12,41 +12,49 @@ extends Control
 var programa_abierto: bool = false
 var programa
 
+# Señal que indica que la computadora se ha apagado
 signal apagada
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	match programa_abierto:
-		false:
-			LGF.disabled = false
-			WRT.disabled = false
-			MSN.disabled = false
-		true:
-			LGF.disabled = true
-			WRT.disabled = true
-			MSN.disabled = true
-
-# Al presionar el icono de "Let's go fishing"
+# Al presionar el icono de "Fish it!"
 func _on_lgf_pressed() -> void:
 	click.play()
-	programa = ResourceLoader.load("res://Escenarios principales/Computadora/Ventana/lgf_ventana.tscn")
+	programa = ResourceLoader.load("res://Escenarios principales/Computadora/LGF/Ventana/lgf_ventana.tscn")
 	programa = programa.instantiate()
 	$Margen_pantalla/Orden_iconos.add_sibling(programa)
 	programa_abierto = true
+	deshabilitar_programas()
 	programa.cerrado.connect(programa_cerrado)
 
+# Al presionar el icono de "Water Hoops"
 func _on_wrt_pressed() -> void:
 	click.play()
-	programa = ResourceLoader.load("res://Escenarios principales/Computadora/WH/wh_ventana.tscn")
+	programa = ResourceLoader.load("res://Escenarios principales/Computadora/WH/Ventana/wh_ventana.tscn")
 	programa = programa.instantiate()
 	$Margen_pantalla/Orden_iconos.add_sibling(programa)
 	programa_abierto = true
+	deshabilitar_programas()
 	programa.cerrado.connect(programa_cerrado)
 
+# Funcióm para deshabilitar los iconos de los programas y así no se abren cuando no queremos que se abran
+func deshabilitar_programas() -> void:
+	LGF.disabled = true
+	WRT.disabled = true
+	MSN.disabled = true
+
+# Habilito los programas para que puedas clickear en ellos
+func habilitar_programas() -> void:
+	LGF.disabled = false
+	WRT.disabled = false
+	MSN.disabled = false
+
+# Al cerrarse un programa
+func programa_cerrado() -> void:
+	click.play()
+	programa_abierto = false
+	habilitar_programas()
+	programa.cerrado.disconnect(programa_cerrado)
+
+# Al presionar el menu inicio
 func _on_inicio_pressed() -> void:
 	match menu_inicio.visible:
 		true:
@@ -56,14 +64,10 @@ func _on_inicio_pressed() -> void:
 			click.play()
 			menu_inicio.show()
 
+# Al presional el botón "Apagar"
 func _on_apagar_pressed() -> void:
 	match programa_abierto:
 		false:
 			menu_inicio.hide()
 			hide()
 			apagada.emit()
-
-func programa_cerrado() -> void:
-	click.play()
-	programa_abierto = false
-	programa.cerrado.disconnect(programa_cerrado)

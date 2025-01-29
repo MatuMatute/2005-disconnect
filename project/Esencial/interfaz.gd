@@ -9,17 +9,17 @@ extends Control
 @onready var logo = $Principal/logo_container/oddgames
 @onready var presenta = $Principal/logo_container/presenta
 @onready var menu_container = $Principal/Menu
+@onready var logo_juego = $Principal/Menu/Logo
 @onready var menu_botones = $Principal/Menu/menu_botones
 @onready var opciones_container = $Principal/Menu/opciones_container
 @onready var creditos_container = $Principal/Menu/creditos_container
 @onready var pausa_container = $Principal/pausa_container
-@onready var fishing_interface = $Principal/fishing_interface
-#@onready var computadora = $Principal/Computadora
+@onready var computadora = $Principal/Computadora
 @onready var aplicar = $Principal/Menu/opciones_container/volver_container/Aplicar
 @onready var nos_vemos = $Principal/Menu/menu_botones/Nos_vemos
 
 # Asigno las resoluciones de pantalla posibles como valores en un array para simplificar el cambio de resolucion de pantalla
-var resoluciones: Array = [
+const resoluciones: Array = [
 	Vector2i(640, 360), 
 	Vector2i(854, 480), 
 	Vector2i(1280, 720), 
@@ -28,14 +28,14 @@ var resoluciones: Array = [
 	Vector2i(2560, 1440)]
 
 # Asigno los modos de ventana disponibles para el videojuego
-var modo_ventana: Array = [
+const modo_ventana: Array = [
 	DisplayServer.WINDOW_MODE_WINDOWED,
 	DisplayServer.WINDOW_MODE_FULLSCREEN,
 	DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
 ]
 
 # Opciones de sincronización vertical
-var vsync: Array = [
+const vsync: Array = [
 	DisplayServer.VSYNC_ENABLED,
 	DisplayServer.VSYNC_DISABLED
 ]
@@ -57,11 +57,11 @@ func _ready() -> void:
 	#$"/root".add_child.call_deferred(habitacion.instantiate())
 	animacion.play("odd-games")
 
+# Esta funcion se llama cada frame que pasa en el juego
 func _process(_delta: float) -> void:
-	match Global.pausa:
-		false:
-			if Input.is_action_just_pressed("ui_cancel"):
-				pausar()
+	if not Global.pausa:
+		if Input.is_action_just_pressed("ui_cancel"):
+			pausar()
 
 # Al presionar el botón "Jugar" esta función se activa
 func _on_jugar_pressed() -> void:
@@ -75,30 +75,25 @@ func _on_jugar_pressed() -> void:
 	$"/root".add_child(habitacion)
 	$"/root/Habitacion/Animacion".animation_finished.connect(_on_animation_finished)
 
+# Cuando termina la animación de acercamiento a la PC se muestra el escritorio de la PC
 func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "zoom_camara":
 		ambiente.stream_paused = true
-		$Principal/Computadora.show()
+		computadora.show()
 
+# Cuando se apaga la computadora se muestra la habitación de vuelta
 func _on_computadora_apagada() -> void:
 	ambiente.stream_paused = false
 	$"/root/Habitacion".show()
 	$"/root/Habitacion/Jugador".ocupada = false
 
-func _on_probar_computadora_pressed() -> void:
-	click.play()
-	musica_menu.stop()
-	menu_container.hide()
-	fade.hide()
-	Global.pausa = false
-	cerrar_escenarios()
-	$Principal/Computadora.show()
-
+# Mostrar el menú de opciones
 func _on_opciones_pressed() -> void:
 	click.play()
 	menu_botones.hide()
 	opciones_container.show()
 
+# Modificar resolución
 func _on_resolucion_item_selected(index: int) -> void:
 	valores_index["Resolución"] = index
 	match aplicar.visible:
@@ -119,11 +114,13 @@ func _on_vsync_toggled(toggled_on: bool) -> void:
 	match aplicar.visible:
 		false: aplicar.show()
 
+# Función para centrar pantalla sí cambias a modo ventana
 func centrar_pantalla() -> void:
 	var centro_pantalla = DisplayServer.screen_get_position() + DisplayServer.screen_get_size() / 2
 	var tamaño_ventana = get_window().get_size_with_decorations()
 	get_window().set_position(centro_pantalla - tamaño_ventana / 2)
 
+# Se aplica la configuración
 func _on_aplicar_configuracion_pressed() -> void:
 	DisplayServer.window_set_mode(modo_ventana[valores_index["Modo de ventana"]])
 	DisplayServer.window_set_vsync_mode(vsync[valores_index["Sincronización vertical"]])
@@ -135,6 +132,7 @@ func _on_aplicar_configuracion_pressed() -> void:
 func _on_creditos_pressed() -> void:
 	click.play()
 	menu_botones.hide()
+	logo_juego.hide()
 	creditos_container.show()
 
 # El botón "Salir" hace que el juego se cierre.
@@ -152,14 +150,13 @@ func _on_salir_mouse_exited() -> void:
 
 # Cuando se presiona el botón para volver al menú
 func _on_volver_menu_pressed() -> void:
-	match opciones_container.visible:
-		true:
-			menu_botones.show()
-			opciones_container.hide()
-	match creditos_container.visible:
-		true:
-			menu_botones.show()
-			creditos_container.hide()
+	if opciones_container.visible:
+		menu_botones.show()
+		opciones_container.hide()
+	if creditos_container.visible:
+		menu_botones.show()
+		logo_juego.show()
+		creditos_container.hide()
 
 # Pausa el juego
 func pausar() -> void:
@@ -188,9 +185,9 @@ func _on_regresar_menu_pressed() -> void:
 	pausa_container.hide()
 	menu_container.show()
 
+# Esta función cierra los escenarios, está algo viejo y tengo que renovarlo
 func cerrar_escenarios() -> void:
 	var escenarios = get_tree().get_nodes_in_group("Escenarios")
-	match escenarios.size():
-		0: $"Principal/Computadora".queue_free()
+	computadora.hide()
 	for i in escenarios.size():
 		escenarios[i].queue_free()

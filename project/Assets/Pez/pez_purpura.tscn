@@ -1,21 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpwwjons4wlvj"]
+[gd_scene load_steps=7 format=3 uid="uid://cyf8l2yaug4cv"]
 
-[ext_resource type="Script" path="res://Assets/Pez/pez_azul.gd" id="1_knuuj"]
-[ext_resource type="Texture2D" uid="uid://32apuug1lk8f" path="res://Assets/Pez/Pez1.png" id="2_lobdl"]
-[ext_resource type="Texture2D" uid="uid://b4afglomfxn58" path="res://Assets/Pez/Pez2.png" id="3_4jlpe"]
-[ext_resource type="Texture2D" uid="uid://ncssl4gdp6lg" path="res://Assets/Pez/Pez3.png" id="4_4ooam"]
+[ext_resource type="Script" path="res://Assets/Pez/pez_azul.gd" id="1_jgo7s"]
+[ext_resource type="Texture2D" uid="uid://32apuug1lk8f" path="res://Assets/Pez/Pez1.png" id="2_epq56"]
+[ext_resource type="Texture2D" uid="uid://b4afglomfxn58" path="res://Assets/Pez/Pez2.png" id="3_7j6qr"]
+[ext_resource type="Texture2D" uid="uid://ncssl4gdp6lg" path="res://Assets/Pez/Pez3.png" id="4_n8o26"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s5pfv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_lobdl")
+"texture": ExtResource("2_epq56")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_4jlpe")
+"texture": ExtResource("3_7j6qr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_4ooam")
+"texture": ExtResource("4_n8o26")
 }],
 "loop": false,
 "name": &"Abrir",
@@ -23,13 +23,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_4ooam")
+"texture": ExtResource("4_n8o26")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_4jlpe")
+"texture": ExtResource("3_7j6qr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_lobdl")
+"texture": ExtResource("2_epq56")
 }],
 "loop": false,
 "name": &"Cerrar",
@@ -39,15 +39,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otbha"]
 size = Vector2(34, 14)
 
-[node name="Pez_azul" type="Area2D" groups=["Peces"]]
+[node name="Pez_purpura" type="Area2D" groups=["Peces"]]
 collision_layer = 8
 collision_mask = 8
-script = ExtResource("1_knuuj")
-min_tiempo = 4.0
-max_tiempo = 7.0
+script = ExtResource("1_jgo7s")
+min_tiempo = 1.0
+max_tiempo = 3.0
 pez = "Azul"
-color_pez = Color(0.38774, 0.579268, 1, 1)
-puntos = 100
+color_pez = Color(0.72023, 0.478806, 0.869853, 1)
+puntos = 1000
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s5pfv")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bd617wware8cd"]
 
-[ext_resource type="Script" path="res://Escenarios principales/Computadora/WH/waterhoops.gd" id="1_q24sj"]
+[ext_resource type="Script" uid="uid://i1ichxrkl65g" path="res://Escenarios principales/Computadora/WH/waterhoops.gd" id="1_q24sj"]
 [ext_resource type="Texture2D" uid="uid://c131uk1fweeed" path="res://Escenarios principales/Computadora/WH/Water Rings - Fondo.png" id="1_ynsjf"]
 [ext_resource type="PackedScene" uid="uid://di7wac0kwb6n1" path="res://Escenarios principales/Computadora/WH/base.tscn" id="2_er6eo"]
 [ext_resource type="PackedScene" uid="uid://bnsl7td4ak8qp" path="res://Escenarios principales/Computadora/WH/Aro/aro.tscn" id="3_x3adv"]

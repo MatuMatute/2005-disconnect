@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bpwwjons4wlvj"]
 
-[ext_resource type="Script" path="res://Assets/Pez/pez_azul.gd" id="1_knuuj"]
+[ext_resource type="Script" uid="uid://dwe6fu6u41lxl" path="res://Assets/Pez/pez_azul.gd" id="1_knuuj"]
 [ext_resource type="Texture2D" uid="uid://32apuug1lk8f" path="res://Assets/Pez/Pez1.png" id="2_lobdl"]
 [ext_resource type="Texture2D" uid="uid://b4afglomfxn58" path="res://Assets/Pez/Pez2.png" id="3_4jlpe"]
 [ext_resource type="Texture2D" uid="uid://ncssl4gdp6lg" path="res://Assets/Pez/Pez3.png" id="4_4ooam"]

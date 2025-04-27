@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b16k3nw23ufwc"]
 
 [ext_resource type="Texture2D" uid="uid://bfcyfr0l724ph" path="res://Escenarios principales/Computadora/WH/Cono/Cono.png" id="1_qdt0u"]
-[ext_resource type="Script" path="res://Escenarios principales/Computadora/WH/Cono/embocar.gd" id="2_edqvy"]
+[ext_resource type="Script" uid="uid://dcehjialacjke" path="res://Escenarios principales/Computadora/WH/Cono/embocar.gd" id="2_edqvy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gv5wc"]
 size = Vector2(8, 75)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://dgv7tstileblb"]
 
-[ext_resource type="Script" path="res://Esencial/interfaz.gd" id="1_06ybr"]
+[ext_resource type="Script" uid="uid://boya8q3a83ia6" path="res://Esencial/interfaz.gd" id="1_06ybr"]
 [ext_resource type="PackedScene" uid="uid://d2me15mdwx6n7" path="res://Escenarios principales/Computadora/computadora.tscn" id="2_oqdvo"]
 [ext_resource type="FontFile" uid="uid://baeix8mw2fiye" path="res://Assets/Fonts/FrutigerLTStd-LightItalic.otf" id="2_x7k2w"]
 [ext_resource type="FontFile" uid="uid://ck15s64movp2k" path="res://Assets/Fonts/FrutigerLTStd-Light.otf" id="3_6idcw"]
@@ -354,11 +354,11 @@ resource_name = "zoom_camara"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qiku4"]
 _data = {
-"RESET": SubResource("Animation_vlqhu"),
-"fade_in": SubResource("Animation_m2mml"),
-"fade_out": SubResource("Animation_1bi1t"),
-"odd-games": SubResource("Animation_tkyx1"),
-"zoom_camara": SubResource("Animation_43tpg")
+&"RESET": SubResource("Animation_vlqhu"),
+&"fade_in": SubResource("Animation_m2mml"),
+&"fade_out": SubResource("Animation_1bi1t"),
+&"odd-games": SubResource("Animation_tkyx1"),
+&"zoom_camara": SubResource("Animation_43tpg")
 }
 
 [node name="Interfaz" type="Control"]
@@ -391,7 +391,7 @@ offset_bottom = 979.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 32
-text = "0.3.2-burbuja"
+text = "0.3.3-burbuja"
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -524,6 +524,7 @@ alignment = 1
 selected = 4
 item_count = 6
 popup/item_0/text = "640 x 360"
+popup/item_0/id = 0
 popup/item_1/text = "854 x 480"
 popup/item_1/id = 1
 popup/item_2/text = "1280 x 720"
@@ -554,6 +555,7 @@ alignment = 1
 selected = 2
 item_count = 3
 popup/item_0/text = "Ventana"
+popup/item_0/id = 0
 popup/item_1/text = "Pantalla completa"
 popup/item_1/id = 1
 popup/item_2/text = "Sin bordes"
@@ -563,9 +565,9 @@ popup/item_2/id = 2
 layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/pressed = SubResource("StyleBoxFlat_nrao6")
@@ -716,7 +718,7 @@ uppercase = true
 [node name="Animaciones" type="AnimationPlayer" parent="Principal"]
 root_node = NodePath("../Fade")
 libraries = {
-"": SubResource("AnimationLibrary_qiku4")
+&"": SubResource("AnimationLibrary_qiku4")
 }
 
 [node name="Audio" type="Node" parent="."]

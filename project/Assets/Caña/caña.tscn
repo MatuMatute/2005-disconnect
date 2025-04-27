@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://b4nvod7n5e0hj"]
 
-[ext_resource type="Script" path="res://Assets/Caña/caña.gd" id="1_ej364"]
+[ext_resource type="Script" uid="uid://cm2nopytesgg3" path="res://Assets/Caña/caña.gd" id="1_ej364"]
 [ext_resource type="Texture2D" uid="uid://bqjs72manrfap" path="res://Assets/Caña/caña.png" id="1_pjaxc"]
 [ext_resource type="Texture2D" uid="uid://wrdxwk8chiq8" path="res://Assets/Caña/Anzuelo (Transparente).png" id="4_7ahom"]
 [ext_resource type="Texture2D" uid="uid://dl52lqmi6tta5" path="res://Assets/Caña/sombra_anzuelo.png" id="4_nju8j"]
-[ext_resource type="Script" path="res://Assets/Caña/anzuelo.gd" id="4_qhlno"]
+[ext_resource type="Script" uid="uid://8k0hi1f7iarl" path="res://Assets/Caña/anzuelo.gd" id="4_qhlno"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s6wjw"]
 size = Vector2(16, 6)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d2me15mdwx6n7"]
 
-[ext_resource type="Script" path="res://Escenarios principales/Computadora/computadora.gd" id="1_t8hjx"]
+[ext_resource type="Script" uid="uid://c1suoxuuvkqbu" path="res://Escenarios principales/Computadora/computadora.gd" id="1_t8hjx"]
 [ext_resource type="Texture2D" uid="uid://m66jck0pvjwb" path="res://Escenarios principales/Computadora/monitor fp.png" id="1_w6too"]
 [ext_resource type="Texture2D" uid="uid://b2m08dkxje675" path="res://Escenarios principales/Computadora/Iconos/Icono LGF.png" id="2_ooisy"]
 [ext_resource type="FontFile" uid="uid://cysc5spliqiyf" path="res://Assets/Fonts/FrutigerLTStd-Roman.otf" id="3_ivula"]
@@ -68,12 +68,12 @@ layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_pressed_color = Color(0, 0, 1, 1)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_ivula")
 theme_override_font_sizes/font_size = 32
 text = "Fish It!"
@@ -89,11 +89,11 @@ layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_pressed_color = Color(0, 0, 1, 1)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_ivula")
 theme_override_font_sizes/font_size = 32
 text = "Water Hoops"
@@ -108,11 +108,11 @@ layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_pressed_color = Color(0, 0, 1, 1)
-theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_ivula")
 theme_override_font_sizes/font_size = 32
 text = "Chat"

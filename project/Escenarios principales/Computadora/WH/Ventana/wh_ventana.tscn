@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://canv3ldsmi35o"]
 
-[ext_resource type="Script" path="res://Escenarios principales/Computadora/WH/Ventana/wh_ventana.gd" id="1_vwqmt"]
+[ext_resource type="Script" uid="uid://jfei4xj8eluv" path="res://Escenarios principales/Computadora/WH/Ventana/wh_ventana.gd" id="1_vwqmt"]
 [ext_resource type="FontFile" uid="uid://ck15s64movp2k" path="res://Assets/Fonts/FrutigerLTStd-Light.otf" id="2_ttsqo"]
 [ext_resource type="FontFile" uid="uid://sg2wkwe5in7k" path="res://Assets/Fonts/FrutigerLTStd-Black.otf" id="3_glrda"]
 [ext_resource type="PackedScene" uid="uid://bd617wware8cd" path="res://Escenarios principales/Computadora/WH/waterhoops.tscn" id="4_2510n"]

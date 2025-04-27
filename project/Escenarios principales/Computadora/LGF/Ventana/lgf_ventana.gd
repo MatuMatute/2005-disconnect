@@ -6,15 +6,24 @@ extends MarginContainer
 @onready var etiqueta_puntuacion = $Top/fishing_interface/puntuacion_container/Puntuacion
 @onready var control_orden = $Top/fishing_interface/control_orden
 @onready var mostrar_nivel = $Top/fishing_interface/Mostrar_nivel
-@onready var juego = $Top/letsgofishing
-@onready var tiempo = $Top/letsgofishing/Tiempo
-@onready var conteo_peces_azules = $Top/fishing_interface/inv_container/pez_azul/Conteo
+@onready var juego = $Top/fishing_interface/letsgofishing
+@onready var tiempo = $Top/fishing_interface/letsgofishing/Tiempo
+@onready var pez_container: Dictionary = {
+	"Azul": $Top/fishing_interface/inv_container/pez_azul,
+	"Verde": $Top/fishing_interface/inv_container/pez_verde,
+	"Rojo": $Top/fishing_interface/inv_container/pez_rojo,
+	"Purpura": $Top/fishing_interface/inv_container/pez_purpura
+}
 
 # Coloco una variable para saber cuando y qué el nivel se está jugando e inventario
 var transicion: bool = true
 var nivel_actual: int = 1
-var peces_azules = 0
-
+var peces: Dictionary = {
+	"Azul": 0,
+	"Verde": 0,
+	"Rojo": 0,
+	"Purpura": 0
+}
 # Señal para que la computadora sepa que el programa se cerró
 signal cerrado
 signal comenzar_nivel
@@ -61,10 +70,11 @@ func _on_cerrar_pressed() -> void:
 func _on_letsgofishing_cambiar_puntuacion(puntuacion, pez) -> void:
 	etiqueta_puntuacion.text = str(puntuacion)
 	
-	match pez:
-		"Azul": 
-			peces_azules += 1
-			conteo_peces_azules.text = str(peces_azules)
+	if pez != null:
+		peces[pez] += 1
+		
+		pez_container[pez].show()
+		pez_container[pez].get_node("Conteo").text = str(peces[pez])
 
 func pausado() -> void:
 	$Transicion.paused = true

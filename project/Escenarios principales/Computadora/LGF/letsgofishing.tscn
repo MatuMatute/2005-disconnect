@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bwc84fi7187th"]
 
-[ext_resource type="Script" path="res://Escenarios principales/Computadora/LGF/letsgofishing.gd" id="1_il06m"]
+[ext_resource type="Script" uid="uid://dhcalh2yeufbt" path="res://Escenarios principales/Computadora/LGF/letsgofishing.gd" id="1_il06m"]
 [ext_resource type="Texture2D" uid="uid://tx3uqjanq4cs" path="res://Escenarios principales/Computadora/LGF/VentanaFISHIT.png" id="2_1u7dh"]
 [ext_resource type="PackedScene" uid="uid://wf2r7p6tyov7" path="res://Assets/Circulo_lago/circulo_lago.tscn" id="2_kytvw"]
 [ext_resource type="PackedScene" uid="uid://b4nvod7n5e0hj" path="res://Assets/Caña/caña.tscn" id="3_25tws"]

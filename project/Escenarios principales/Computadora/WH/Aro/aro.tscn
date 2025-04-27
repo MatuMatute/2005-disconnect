@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnsl7td4ak8qp"]
 
-[ext_resource type="Script" path="res://Escenarios principales/Computadora/WH/Aro/aro.gd" id="1_oqhf1"]
+[ext_resource type="Script" uid="uid://b1wt63v0c26q2" path="res://Escenarios principales/Computadora/WH/Aro/aro.gd" id="1_oqhf1"]
 [ext_resource type="Texture2D" uid="uid://dg1dneum1hmwd" path="res://Escenarios principales/Computadora/WH/Aro/Aro.png" id="2_0jx7c"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ok16f"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dxw216m87unqw"]
 
-[ext_resource type="Script" path="res://Esencial/Protagonista/jugador.gd" id="1_n0c4k"]
+[ext_resource type="Script" uid="uid://bv13bmy7h6h8p" path="res://Esencial/Protagonista/jugador.gd" id="1_n0c4k"]
 [ext_resource type="Texture2D" uid="uid://c2c1ju7n1ekh2" path="res://Esencial/Protagonista/Prueba.png" id="1_ogsml"]
 [ext_resource type="Texture2D" uid="uid://cobb5dmexkgd0" path="res://Esencial/Protagonista/Mouse_indicador.png" id="2_3mobu"]
 

@@ -252,6 +252,7 @@ wait_time = 3.0
 
 [node name="Jingle" type="AudioStreamPlayer" parent="Audio/Musica"]
 stream = ExtResource("6_vnc11")
+bus = &"Musica"
 parameters/looping = true
 
 [node name="Sonidos" type="Node" parent="Audio"]
@@ -259,10 +260,12 @@ parameters/looping = true
 [node name="Win" type="AudioStreamPlayer" parent="Audio/Sonidos"]
 stream = ExtResource("9_2r8af")
 volume_db = 5.0
+bus = &"Sonidos"
 
 [node name="Lose" type="AudioStreamPlayer" parent="Audio/Sonidos"]
 stream = ExtResource("10_o31hf")
 volume_db = 5.0
+bus = &"Sonidos"
 
 [connection signal="comenzar_nivel" from="." to="Top/fishing_interface/letsgofishing" method="_on_comenzar_nivel"]
 [connection signal="pressed" from="Top/Cerrar" to="." method="_on_cerrar_pressed"]

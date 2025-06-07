@@ -128,6 +128,7 @@ vertical_icon_alignment = 0
 
 [node name="Click" type="AudioStreamPlayer" parent="Audio/Sonidos"]
 stream = ExtResource("8_k88k0")
+bus = &"Sonidos"
 
 [connection signal="pressed" from="Inicio" to="." method="_on_inicio_pressed"]
 [connection signal="pressed" from="Inicio/Menu_inicio/Apagar" to="." method="_on_apagar_pressed"]

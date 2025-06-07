@@ -18,6 +18,9 @@ extends Control
 @onready var aplicar = $Principal/Menu/opciones_container/volver_container/Aplicar
 @onready var nos_vemos = $Principal/Menu/menu_botones/Nos_vemos
 
+# Asigno la ventana en el que se muestra el videojuego
+@onready var ventana = get_window()
+
 # Asigno las resoluciones de pantalla posibles como valores en un array para simplificar el cambio de resolucion de pantalla
 const resoluciones: Array = [
 	Vector2i(640, 360), 
@@ -27,11 +30,10 @@ const resoluciones: Array = [
 	Vector2i(1920, 1080), 
 	Vector2i(2560, 1440)]
 
-# Asigno los modos de ventana disponibles para el videojuego
+#Asigno los modos de ventana disponibles para el videojuego
 const modo_ventana: Array = [
-	DisplayServer.WINDOW_MODE_WINDOWED,
-	DisplayServer.WINDOW_MODE_FULLSCREEN,
-	DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
+	Window.MODE_WINDOWED,
+	Window.MODE_EXCLUSIVE_FULLSCREEN
 ]
 
 # Opciones de sincronización vertical
@@ -43,7 +45,7 @@ const vsync: Array = [
 # Administrador de los valores cambiados en el menú de opciones
 var valores_index = {
 	"Resolución": 4,
-	"Modo de ventana": 2,
+	"Modo de ventana": 1,
 	"Sincronización vertical": 0
 }
 
@@ -52,6 +54,7 @@ var habitacion = ResourceLoader.load("res://Escenarios principales/Habitación/h
 
 # Esta función se llama la primera vez que se llama al nodo.
 func _ready() -> void:
+	ventana.mode = 4
 	musica_menu.play()
 	Global.pausa = true
 	#$"/root".add_child.call_deferred(habitacion.instantiate())
@@ -95,13 +98,21 @@ func _on_opciones_pressed() -> void:
 
 # Modificar resolución
 func _on_resolucion_item_selected(index: int) -> void:
+	click.play()
 	valores_index["Resolución"] = index
 	match aplicar.visible:
 		false: aplicar.show()
 
 # Al modificar el tipo de ventana se activa esta función
-func _on_tipo_ventana_selected(index: int) -> void:
-	valores_index["Modo de ventana"] = index
+func _on_pantalla_completa_switched(toggled_on: bool) -> void:
+	click.play()
+	match toggled_on:
+		true: 
+			valores_index["Modo de ventana"] = 1
+			$Principal/Menu/opciones_container/resolucion_container/Opcion.disabled = true
+		false: 
+			valores_index["Modo de ventana"] = 0
+			$Principal/Menu/opciones_container/resolucion_container/Opcion.disabled = false
 	match aplicar.visible:
 		false: aplicar.show()
 
@@ -117,14 +128,15 @@ func _on_vsync_toggled(toggled_on: bool) -> void:
 # Función para centrar pantalla sí cambias a modo ventana
 func centrar_pantalla() -> void:
 	var centro_pantalla = DisplayServer.screen_get_position() + DisplayServer.screen_get_size() / 2
-	var tamaño_ventana = get_window().get_size_with_decorations()
-	get_window().set_position(centro_pantalla - tamaño_ventana / 2)
+	var tamaño_ventana = ventana.get_size_with_decorations()
+	ventana.set_position(centro_pantalla - tamaño_ventana / 2)
 
 # Se aplica la configuración
 func _on_aplicar_configuracion_pressed() -> void:
-	DisplayServer.window_set_mode(modo_ventana[valores_index["Modo de ventana"]])
+	click.play()
+	ventana.mode = modo_ventana[valores_index["Modo de ventana"]]
 	DisplayServer.window_set_vsync_mode(vsync[valores_index["Sincronización vertical"]])
-	get_window().set_size(resoluciones[valores_index["Resolución"]])
+	ventana.size = resoluciones[valores_index["Resolución"]]
 	centrar_pantalla()
 	aplicar.hide()
 
@@ -150,6 +162,7 @@ func _on_salir_mouse_exited() -> void:
 
 # Cuando se presiona el botón para volver al menú
 func _on_volver_menu_pressed() -> void:
+	click.play()
 	if opciones_container.visible:
 		menu_botones.show()
 		opciones_container.hide()

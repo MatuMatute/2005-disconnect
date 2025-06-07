@@ -122,6 +122,7 @@ wait_time = 3.0
 
 [node name="Jingle" type="AudioStreamPlayer" parent="Audio/Musica"]
 stream = ExtResource("5_ffne6")
+bus = &"Musica"
 parameters/looping = true
 
 [node name="Sonido" type="Node" parent="Audio"]
@@ -129,6 +130,7 @@ parameters/looping = true
 [node name="Win" type="AudioStreamPlayer" parent="Audio/Sonido"]
 stream = ExtResource("6_ey5yf")
 volume_db = 5.0
+bus = &"Sonidos"
 
 [connection signal="ganaste" from="Top/waterhoops" to="." method="_on_waterhoops_ganaste"]
 [connection signal="pressed" from="Top/Cerrar" to="." method="_on_cerrar_pressed"]

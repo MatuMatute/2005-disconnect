@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7ukterxypt1c"]
+
+[ext_resource type="Script" uid="uid://dsg07cl1ed28h" path="res://Esencial/Menú principal/deslizador_volumen.gd" id="1_jucpc"]
+
+[node name="deslizador_volumen" type="HSlider"]
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_jucpc")
+
+[connection signal="value_changed" from="." to="." method="valor_cambiado"]

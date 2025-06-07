@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dgv7tstileblb"]
+[gd_scene load_steps=28 format=3 uid="uid://dgv7tstileblb"]
 
 [ext_resource type="Script" uid="uid://boya8q3a83ia6" path="res://Esencial/interfaz.gd" id="1_06ybr"]
 [ext_resource type="PackedScene" uid="uid://d2me15mdwx6n7" path="res://Escenarios principales/Computadora/computadora.tscn" id="2_oqdvo"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bdv10vgxuqn5v" path="res://Esencial/Menú principal/h_menu_boton_creditos.png" id="11_htux3"]
 [ext_resource type="AudioStream" uid="uid://c6nwd0aglmrx2" path="res://Assets/Audio/Música/monoambiente.ogg" id="12_i6wxi"]
 [ext_resource type="Texture2D" uid="uid://bikcq8a3vv3xx" path="res://Esencial/Menú principal/h_menu_boton_salir.png" id="13_grfte"]
+[ext_resource type="PackedScene" uid="uid://c7ukterxypt1c" path="res://Esencial/Menú principal/deslizador_volumen.tscn" id="15_30i2b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrao6"]
 
@@ -391,7 +392,7 @@ offset_bottom = 979.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 32
-text = "0.3.3-burbuja"
+text = "0.3.4-burbuja"
 horizontal_alignment = 2
 vertical_alignment = 2
 
@@ -504,6 +505,14 @@ theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 32
 text = "Aplicar configuración"
 
+[node name="Gráficos" type="Label" parent="Principal/Menu/opciones_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Gráficos"
+horizontal_alignment = 1
+
 [node name="resolucion_container" type="HBoxContainer" parent="Principal/Menu/opciones_container"]
 layout_mode = 2
 theme_override_constants/separation = 20
@@ -514,12 +523,13 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 32
-text = "Resolución de pantalla"
+text = "Resolución de ventana"
 
 [node name="Opcion" type="OptionButton" parent="Principal/Menu/opciones_container/resolucion_container"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 32
+disabled = true
 alignment = 1
 selected = 4
 item_count = 6
@@ -536,30 +546,20 @@ popup/item_4/id = 4
 popup/item_5/text = "2560 x 1440"
 popup/item_5/id = 5
 
-[node name="ventana_container" type="HBoxContainer" parent="Principal/Menu/opciones_container"]
+[node name="pantallacom_container" type="HBoxContainer" parent="Principal/Menu/opciones_container"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Ventana" type="Label" parent="Principal/Menu/opciones_container/ventana_container"]
+[node name="Pantalla_completa" type="Label" parent="Principal/Menu/opciones_container/pantallacom_container"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_6idcw")
 theme_override_font_sizes/font_size = 32
-text = "Modo de ventana"
+text = "Pantalla completa"
 
-[node name="Opcion" type="OptionButton" parent="Principal/Menu/opciones_container/ventana_container"]
+[node name="Activar" type="CheckButton" parent="Principal/Menu/opciones_container/pantallacom_container"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_6idcw")
-theme_override_font_sizes/font_size = 32
-alignment = 1
-selected = 2
-item_count = 3
-popup/item_0/text = "Ventana"
-popup/item_0/id = 0
-popup/item_1/text = "Pantalla completa"
-popup/item_1/id = 1
-popup/item_2/text = "Sin bordes"
-popup/item_2/id = 2
+button_pressed = true
 
 [node name="Vsync" type="CheckButton" parent="Principal/Menu/opciones_container"]
 layout_mode = 2
@@ -574,6 +574,47 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_nrao6")
 button_pressed = true
 text = "Sincronización vertical"
 expand_icon = true
+
+[node name="Audio" type="Label" parent="Principal/Menu/opciones_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="etiqueta_general" type="Label" parent="Principal/Menu/opciones_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Volumen General"
+
+[node name="general" parent="Principal/Menu/opciones_container" instance=ExtResource("15_30i2b")]
+layout_mode = 2
+nombre_bus = "Master"
+
+[node name="etiqueta_musica" type="Label" parent="Principal/Menu/opciones_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Volumen de la música"
+
+[node name="musica" parent="Principal/Menu/opciones_container" instance=ExtResource("15_30i2b")]
+layout_mode = 2
+nombre_bus = "Musica"
+
+[node name="etiqueta_sonidos" type="Label" parent="Principal/Menu/opciones_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6idcw")
+theme_override_font_sizes/font_size = 32
+text = "Volumen de los sonidos"
+
+[node name="sonidos" parent="Principal/Menu/opciones_container" instance=ExtResource("15_30i2b")]
+layout_mode = 2
+nombre_bus = "Sonidos"
 
 [node name="creditos_container" type="VBoxContainer" parent="Principal/Menu"]
 visible = false
@@ -598,9 +639,9 @@ theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("11_3valw")
 theme_override_font_sizes/font_size = 32
 text = "odd-games
-Camila Martínez - Composición musical
-Matías Nahuel González Sandoval - Programación
+Camila Martínez - Diseño sonoro
 Florencia Belate Dietrich - Arte visual
+Matías Nahuel González Sandoval - Programación
 
 Música
 Human Feeling - Patroux
@@ -727,16 +768,19 @@ libraries = {
 
 [node name="Main_menu" type="AudioStreamPlayer" parent="Audio/Musica"]
 stream = ExtResource("11_1usmy")
+bus = &"Musica"
 parameters/looping = true
 
 [node name="Ambiente" type="AudioStreamPlayer" parent="Audio/Musica"]
 stream = ExtResource("12_i6wxi")
+bus = &"Musica"
 parameters/looping = true
 
 [node name="Sonidos" type="Node" parent="Audio"]
 
 [node name="Click" type="AudioStreamPlayer" parent="Audio/Sonidos"]
 stream = ExtResource("11_74xdd")
+bus = &"Sonidos"
 
 [connection signal="apagada" from="Principal/Computadora" to="." method="_on_computadora_apagada"]
 [connection signal="pressed" from="Principal/Menu/menu_botones/Jugar" to="." method="_on_jugar_pressed"]
@@ -748,7 +792,7 @@ stream = ExtResource("11_74xdd")
 [connection signal="pressed" from="Principal/Menu/opciones_container/volver_container/Volver_menu2" to="." method="_on_volver_menu_pressed"]
 [connection signal="pressed" from="Principal/Menu/opciones_container/volver_container/Aplicar" to="." method="_on_aplicar_configuracion_pressed"]
 [connection signal="item_selected" from="Principal/Menu/opciones_container/resolucion_container/Opcion" to="." method="_on_resolucion_item_selected"]
-[connection signal="item_selected" from="Principal/Menu/opciones_container/ventana_container/Opcion" to="." method="_on_tipo_ventana_selected"]
+[connection signal="toggled" from="Principal/Menu/opciones_container/pantallacom_container/Activar" to="." method="_on_pantalla_completa_switched"]
 [connection signal="toggled" from="Principal/Menu/opciones_container/Vsync" to="." method="_on_vsync_toggled"]
 [connection signal="pressed" from="Principal/Menu/creditos_container/Volver_menu" to="." method="_on_volver_menu_pressed"]
 [connection signal="pressed" from="Principal/pausa_container/Resumir" to="." method="resumir"]
